@@ -1,0 +1,116 @@
+The real time display has both client and server parts to it.
+
+SERVER
+
+C version:
+
+Each radar runs an application which pushes radar data out over a socket. The web
+server runs a program which connects to each of the radars, and converts it to 
+something readable by a web browser. Data is sent from the radars in a format that
+requires to use of C libraries written for SuperDARN data products. The socket 
+server that runs on the web serving machine uses these libraries to parse the socket
+data from each radar. The real time display radar FOV range cells are colored based
+on their data values, so once the radar data is parsed, it is converted to a 
+corresponding CSS color value through look up tables. Color values for each range 
+cell are packed together into JSON format and sent over a new socket to the web browser.
+
+
+Python version:
+
+After I wrote a python based dmap reading routine, I rewrote this backend using
+Python to be more reliable. 
+
+-more error checking is done in the dmap routine which prevents crashes from
+corrupted socket data.
+-instead of a thread for each radar, each instance of the program controls a single
+radar so that if a crash happens, it doesnt affect the other radars. Each instance
+still has two threads. One thread controls the connections to the radars, and 
+another controls connections from web clients.
+-more robust reconnection logic if there are errors due to timeouts or corrupted data.
+
+After further investigation, the start of radar packets is given by the 4 byte header,
+[0x49,0x08,0x1e,0x00]. The next 4 bytes indicate the length of the dmap record. 
+We read bytes from the socket until we have the full record. We parse the stream
+using the new python dmap tool. If any errors are encountered, we scrap this record
+and move to the next one. If it is successful we attempt to build a json packet
+for the web server. It is possible that dmap fields could still corrupted if
+they were the right length so we again try, but discard on failures. Once a packet
+is successfully converted, it is sent to all web clients who are connected.
+
+**to prevent systematic timeout errors, once a certain number of timeouts occur
+the connection is dropped and a new one is started. I found that problematic
+connections could timeout indefinitely for some reason without this check.
+
+**It is possible for bad connections to have misalligned bytes so that a packet
+header is never properly read. I have a threshold counter which will reset the
+connection if a header is not read within a certain number of bytes. This threshold
+is set quite high, so there needs to be big problems for this to trigger.
+
+**I've tried to safely handle has many errors as possible, but should an unknown
+exception trigger and kill a thread, the main thread acts as a watchdog to restart
+any dead threads.
+
+
+CLIENT
+
+The real time display client heavily uses the framework D3.js to display data, so 
+understanding how that framework works is critical. I mainly use the map display
+capabilities of D3.js to build an interactive globe that shows the radar fields 
+of view. 
+
+The first thing required is a set of polygons representing geographic structures in
+order for D3.js to be able to provide a map. D3.js requires polygons in a format
+known as GeoJSON or TopoJSON formats. GeoJSON is simply a format which builds a 
+collection of polygons made up of vertices of geographic coordinates. TopoJSON
+is just an extension that simplifies the data and also builds a mesh of the 
+borders between polygons.
+
+I was able to find a GeoJSON world map and I had to manually convert the radar
+field of view coordinate polygons into GeoJSON representation. I then converted
+all of these structures to TopoJSON which gave me the countries and their borders
+as well as the field of view and its outline. I supply the -s argument to the 
+TopoJSON conversion to simplify the polygons as much as possible for performance.
+
+I then used D3.js to create an orthographic map projection of my TopoJSON polygon
+data for the world map and radar field of view. D3.js then creates a scalar vector
+graphic that can be added to the webpage. I added aditional javascript logic that 
+would interactively show or remove the different radar fields of view, depending
+on what the user wants to see. Logic was added to be able redraw the graphic from
+different angles which allows a user to rotate the map around. Likewise, similar 
+logic was added to be able to scale the graphic allowing for a zoom feature.
+
+With the map created, the client then makes socket connections back to the web
+server for range cell data. The client grabs JSON objects filled with CSS color
+values for all of the data types. When the client grabs new color data, it then
+colors in the corresponding range cells of each field of view that is displayed 
+on the map. There is logic to allow the user to be able to switch what parameter 
+they are viewing. If a parameter is switched, all range cells are cleared and 
+they begin to fill with the colors corresponding to the new parameter.
+
+EXTENDING THE REALTIME DISPLAY
+
+Extending the real time display is very possible. It would require some work,
+but to add a new radar is a matter of adding new connections to the web server,
+converting its field of view coordinates into TopoJSON objects using the procedure
+outlined above, and then updating the client to create a new socket connection and
+display the new radar.
+
+
+IMPROVING THE REALTIME DISPLAY
+
+The rendering of the globe on zoom or rotate requires quite a bit of performance.
+The more radars displayed, the more choppy the zoom or rotation. D3.js is quite
+good at working on sets of data or objects at once, so I think one area of 
+improvement would be to better class together radar field of view polygons so that
+it can optimize the redraw and coloring better.
+
+Instead of having D3.js create a projection for a set of data, projection
+information can be added directly to the TopoJSON polygons during conversion.
+This may add a performance benefit if a new projection is created before a redraw
+of the graphic. It might introduce issues with rotation though if rotation is
+done using a projection object.
+
+The app needs better optimization for browser compatibility. Elements on the page
+should scale better given different window sizes to account for different screens
+and devices. The app also needs support for mobile to account for screen rotation
+and touch displays.

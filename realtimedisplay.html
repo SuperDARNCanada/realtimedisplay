@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  background: #fcfcfa;
+}
+
+.stroke {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.fill {
+  fill: #fff;
+}
+
+.graticule {
+  fill: none;
+  stroke: #222;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.saskatoonFOV {
+  fill: none;
+  stroke: black;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.saskatoon {
+  fill: none;
+  fill-opacity:1;
+}
+
+.princegeorgeFOV {
+  fill: none;
+  stroke: black;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.princegeorge {
+  fill: none;
+  fill-opacity:1;
+}
+
+.rankinFOV {
+  fill: none;
+  stroke: black;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.rankin {
+  fill: none;
+  fill-opacity:1;
+}
+
+.clydeFOV {
+  fill: none;
+  stroke: black;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.clyde {
+  fill: none;
+  fill-opacity:1;
+}
+
+.inuvikFOV {
+  fill: none;
+  stroke: black;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.inuvik {
+  fill: none;
+  fill-opacity:1;
+}
+
+.land {
+  fill: #777;
+  fill-opacity:0.5;
+}
+
+.boundary {
+  fill: none;
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+</style>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+<script src='http://code.jquery.com/jquery-2.0.3.js'></script>
+
+</head>
+<body>
+<div id="globediv" style="float:left;height:100vh;width:66%;padding:0;"></div>
+<div id="options" style="float:right;height:200px;width:34%;">
+		<table style="width:100%;text-align:center;">
+	  <tr>
+	    <th></th>
+	    <th style="text-align:center">Saskatoon</th>
+	    <th style="text-align:center">Rankin Inlet</th>
+	    <th style="text-align:center">Prince George</th>
+	    <th style="text-align:center">Clyde River</th>
+	    <th style="text-align:center">Inuvik</th>
+	  </tr>
+	  <tr>
+	    <td>Radar Mode</td>
+	    <td id="saskatooncp"></td>
+	    <td id="rankincp"></td>
+	    <td id="princegeorgecp"></td>
+	    <td id="clydecp"></td>
+	    <td id="inuvikcp"></td>
+	  </tr>
+	  <tr>
+	    <td>Frequency(kHz)</td>
+	    <td id="saskatoonfreq"></td>
+	    <td id="rankinfreq"></td>
+	    <td id="princegeorgefreq"></td>
+	    <td id="clydefreq"></td>
+	    <td id="inuvikfreq"></td>
+	  </tr>
+	  <tr>
+	    <td>Noise</td>
+	    <td id="saskatoonnoise"></td>
+	    <td id="rankinnoise"></td>
+	    <td id="princegeorgenoise"></td>
+	    <td id="clydenoise"></td>
+	    <td id="inuviknoise"></td>
+	  </tr>
+	  <tr>
+	    <td>Averages</td>
+	    <td id="saskatoonave"></td>
+	    <td id="rankinave"></td>
+	    <td id="princegeorgeave"></td>
+	    <td id="clydeave"></td>
+	    <td id="inuvikave"></td>	    
+	  </tr>
+	  <tr>
+	    <td>Range Sep.(km)</td>
+	    <td id="saskatoonrsep"></td>
+	    <td id="rankinrsep"></td>
+	    <td id="princegeorgersep"></td>
+	    <td id="clydersep"></td>
+	    <td id="inuvikrsep"></td>
+	  </tr>
+	  <tr>
+	    <td>1st Range(km)</td>
+	    <td id="saskatoonfrang"></td>
+	    <td id="rankinfrang"></td>
+	    <td id="princegeorgefrang"></td>
+	    <td id="clydefrang"></td>
+	    <td id="inuvikfrang"></td>
+	  </tr>
+	  <tr>
+	    <td>Time(UTC)</td>
+	    <td id="saskatoontime"></td>
+	    <td id="rankintime"></td>
+	    <td id="princegeorgetime"></td>
+	    <td id="clydetime"></td>
+	    <td id="inuviktime"></td>
+	  </tr>	  	  
+	  <tr>
+	    <td>Show/Hide</td>
+	    <td><input type="checkbox" name="saskatoon" value="Saskatoon"></td>
+	    <td><input type="checkbox" name="rankin" value="Rankin Inlet"></td>
+	    <td><input type="checkbox" name="princegeorge" value="Prince George"></td>
+	    <td><input type="checkbox" name="clyde" value="Clyde River"></td>
+	    <td><input type="checkbox" name="inuvik" value="Inuvik"></td>
+	  </tr>
+		</table>
+</div>
+<div id="description" style="float:right;height:60px;width:34%;font-size:16px;"></div>
+<div style="float:right;height:100px;width:34%;">
+	<div style="height:45%;">		
+		<form action="" style="text-align: center;bottom:0px;">
+		<input type="radio" name="distype" value="pwr">Signal to noise ratio
+		<input type="radio" name="distype" value="width">Spectral width
+		<input type="radio" name="distype" value="velocity" checked="">Velocity
+		<input type="radio" name="distype" value="elevation">Elevation
+		</form>
+	</div>
+	<div id="colorgrad" style="height:50px;width:100%;"></div>
+</div>
+</body>
+<footer>
+ <script src="realtimedisplay.js"></script>
+</footer>
