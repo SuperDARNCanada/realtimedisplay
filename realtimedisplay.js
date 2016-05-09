@@ -100,6 +100,11 @@ d3.json("http://superdarn.usask.ca/jsondata/topoworld.json", function(error, top
       .attr("class", "boundary")
       .attr("d", path);
 
+     drawPoints("saskatoon","green");
+     drawPoints("rankin","blue");
+     drawPoints("princegeorge","red");
+     drawPoints("inuvik","orange");
+     drawPoints("clyde","purple")
 });
 
 var sask_topology,rkn_topology,pgr_topology,cly_topology,inv_topology;
@@ -160,7 +165,19 @@ colorgrad.append("svg:rect")
 	    .attr("height", "50%")
 	    .style("fill", "url(#gradient)");
 
-
+/**
+Function to draw points
+*/
+function drawPoints(radar,color){
+  svgGroup.append("g").attr("class","circles")
+    .selectAll("path").data([radar_coords[radar]])
+    .enter().append("circle")
+    .attr('cx', function(d) { return projection(d)[0];})
+    .attr('cy', function(d) { return projection(d)[1];})
+    .attr("r", 4)
+    .style('fill', color)
+    .attr("d", path);
+}
 /**
 Functions related to the zooming and rotating of the map
 */
@@ -205,7 +222,14 @@ function zoomed() {
     svgGroup.selectAll("#sphere")
       .attr("d", path);
 
-    
+    svgGroup.selectAll(".circles")
+		.remove()
+
+	drawPoints("saskatoon","green");
+	drawPoints("rankin","blue");
+     drawPoints("princegeorge","red");
+     drawPoints("inuvik","orange");
+     drawPoints("clyde","purple"); 
 }
 
 /*var m0,
@@ -412,9 +436,17 @@ function dragged(){
 		projection.rotate(o1);
 	}
 
-/*	svg.selectAll(".point")
-	 		.datum({type: "Point", coordinates: gpos1});
-  svg.selectAll("path").attr("d", path);*/
+
+  
+
+	svgGroup.selectAll(".circles")
+          .remove()
+
+     drawPoints("saskatoon","green");
+     drawPoints("rankin","blue");
+     drawPoints("princegeorge","red");
+     drawPoints("inuvik","orange");
+     drawPoints("clyde","purple");
 
 }
 
@@ -517,6 +549,7 @@ $(document).ready(function() {
         	removeRadar("inuvik");
         }     
     });
+
 });
 
 function displayRadar(name,topology){
@@ -534,6 +567,7 @@ function displayRadar(name,topology){
       .datum(topojson.mesh(topology, topology.objects.geojsondata, function(a, b) { return a !== b; }))
       .attr("class", name + "FOV")
       .attr("d", path);
+
 }
 
 function removeRadar(name){
