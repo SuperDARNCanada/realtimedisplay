@@ -722,6 +722,14 @@ function on_message(evt,radar){
     		case "elevation": data_array = json_data.elevation; break;
     }
 
+    /*Clears the range cells if the cp changes*/
+    current_cp = $("#" + radar + "cp").text();
+    if(json_data.cp != current_cp){
+    	svgGroup.selectAll("." + radar)
+       	.style("fill","transparent");
+    }
+
+
     for(i=0;i<radar_ranges;i++){
 		var color = data_array[i];
       	svgGroup.select("path#" + radar + zeroPad(json_data.beam,2) + zeroPad(i,2))
