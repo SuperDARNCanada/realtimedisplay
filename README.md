@@ -18,6 +18,8 @@ When decoding data sent from rtserver in ROS, the start of radar packets is give
 
 I've tried to safely handle has many errors as possible, but should an unknown exception trigger and kill a thread, the main thread acts as a watchdog to restart any dead threads.
 
+Most browsers do not accept raw socket connections, but instead use a wrapped form called Websockets. Included in the package is a tcpip socket to websocket proxy that can be started with a script. Each radar requires its own instance of the proxy.
+
 ###Client
 
 The real time display client heavily uses the framework [D3.js](https://d3js.org/) to display data, so understanding how that framework works is critical. I mainly use the map display capabilities of D3.js to build an interactive globe that shows the radar fields of view. 
