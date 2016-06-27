@@ -15,6 +15,19 @@ var radar_coords = {"saskatoon":[-106.53,52.16],
 
 var sites = ["saskatoon", "rankin", "princegeorge", "inuvik", "clyde"];
 
+
+if (!String.prototype.format) {
+  String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) { 
+      return typeof args[number] != 'undefined'
+        ? args[number]
+        : match
+      ;
+    });
+  };
+}
+
 function GlobeSVG() {
   this.lat_lon = [99,-60];
   this.divContainer = "#globediv"
@@ -41,7 +54,6 @@ function GlobeSVG() {
 }
 
 GlobeSVG.prototype.createProjection = function() {
-  console.log(this);
   this.projection = d3.geo.orthographic()
     .scale(this.height*.45)
     .translate([this.width / 2, this.height / 2])
@@ -876,7 +888,6 @@ change
 */
 
 function Interactivity(gradient,globeSVG,topology){
-  console.log(gradient,globeSVG,topology);
   this.displayType = "velocity";
   this.gradientObj = gradient;
   this.globeSVG = globeSVG;
@@ -885,9 +896,10 @@ function Interactivity(gradient,globeSVG,topology){
   this.displayColorLegend(this.gradientObj);
   $("#description").text("Plasma drift velocity along the beam direction (blue – towards the radar; red – away from the radar; grey for ground scatter).");
   this.defineParameterTypeSwitching();
+  var i,len=sites.length;
 
-  var i,len=sites.len;
   for(i=0; i<len;i++){
+    console.log("got here");
     this.defineRadarButtonAction(sites[i]);
   }
 
@@ -1080,16 +1092,17 @@ Interactivity.prototype.removeRadar = function(name){
 }
 
 Interactivity.prototype.defineRadarButtonAction = function(name){
-    var jQuerySelector = 'input[type=checkbox][name={0}]'.format(name);
+    var jQuerySelector = "input[type=checkbox][name={0}]".format(name);
     var self = this;
 
     $(jQuerySelector).change(function() {
       var topology = self.topologyObj.topologies[name];
+      console.log(self);
       if($(this).is(":checked")) {
-        displayRadar(name,topology);
+        self.displayRadar(name,topology);
       }
       else{
-        removeRadar(name);
+        self.removeRadar(name);
       }     
    });
 }
@@ -1099,6 +1112,10 @@ Creating new websocket connections to the server for the field of view data.
 CSS color codes for range cells are grabbed from the server and then range
 cells are updated
 */
+function zeroPad(num, places) {
+  var zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
 
 function RadarConnections(interactivityObj,globeSVG){
   var websocketAddresses = ['ws://128.233.224.43:5005',
@@ -1108,13 +1125,21 @@ function RadarConnections(interactivityObj,globeSVG){
                             'ws://128.233.224.43:5008'];
 
   this.radarConnections = {};
+  var new_i,i,len = sites.length;
+  var self = this;
 
-  var i,len = sites.length;
+  var onMessageFunctions = [];
+
+  /*IFFE to correctly rectify scope of the loop variable in a closure*/
+  for(new_i=0; new_i<len; new_i++){
+    (function(i){
+      onMessageFunctions[i] = function(evt){self.on_message(evt,sites[i],interactivityObj,globeSVG);};
+    })(new_i);
+  }
+
   for(i=0; i<len; i++){
     this.createWebsocket(sites[i],websocketAddresses[i]);
-    
-    var on_message = function(evt){this.on_message(evt,sites[i],interactivityObj,globeSVG);}.bind(this);
-    this.radarConnections[sites[i]].on_message = on_message;
+    this.radarConnections[sites[i]].onmessage = onMessageFunctions[i];
   }
 
 
@@ -1126,7 +1151,6 @@ RadarConnections.prototype.createWebsocket = function(name,websocketAddress){
 
 RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,globeSVG){
   var reader = new FileReader();
-
   reader.onload = function(){
     var received_data = reader.result;
     json_data = JSON.parse(received_data);
@@ -1183,7 +1207,6 @@ var radarConnections;
 $(document).ready(function() {
   interactivity = new Interactivity(colorGrad,globeSVG,topology);
   radarConnections = new RadarConnections(interactivity,globeSVG);
-  console.log(radarConnections);
 /*    $('input[type=radio][name=distype]').change(function() {
        displayColorLegend(this.value);
        display_type = this.value;
