@@ -1157,7 +1157,7 @@ RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,glob
     radar_ranges = json_data.nrang;
     
     var data_array = [];
-    switch(interactivityObj.display_type){
+    switch(interactivityObj.displayType){
         case "pwr": data_array = json_data.power; break;
         case "width": data_array = json_data.width; break;
         case "velocity": data_array = json_data.velocity; break;
@@ -1173,9 +1173,10 @@ RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,glob
 
 
     for(i=0;i<radar_ranges;i++){
-    var color = data_array[i];
-       globeSVG.svgGroup.select("path#" + radar + zeroPad(json_data.beam,2) + zeroPad(i,2))
+      var color = data_array[i];
+      globeSVG.svgGroup.select("path#" + radar + zeroPad(json_data.beam,2) + zeroPad(i,2))
         .style("fill",color);
+
     }
     
     $("#" + radar + "freq").text(json_data.freq);
