@@ -230,9 +230,9 @@ GlobeSVG.prototype.drawPoints = function() {
 function Topology() {
   var topologyLinks = ["http://superdarn.usask.ca/jsondata/sastopojson.json",
                        "http://superdarn.usask.ca/jsondata/rkntopojson.json",
-                       "http://superdarn.usask.ca/jsondata/clytopojson.json",
+                       "http://superdarn.usask.ca/jsondata/pgrtopojson.json",
                        "http://superdarn.usask.ca/jsondata/invtopojson.json",
-                       "http://superdarn.usask.ca/jsondata/pgrtopojson.json"
+                       "http://superdarn.usask.ca/jsondata/clytopojson.json",
                        ];
 
   this.topologies = {};
