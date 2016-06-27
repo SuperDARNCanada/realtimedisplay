@@ -1097,7 +1097,6 @@ Interactivity.prototype.defineRadarButtonAction = function(name){
 
     $(jQuerySelector).change(function() {
       var topology = self.topologyObj.topologies[name];
-      console.log(self);
       if($(this).is(":checked")) {
         self.displayRadar(name,topology);
       }
