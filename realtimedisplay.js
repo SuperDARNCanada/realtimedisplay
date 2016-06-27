@@ -1085,7 +1085,7 @@ Interactivity.prototype.displayRadar = function(name){
 }
 
 Interactivity.prototype.removeRadar = function(name){
-  this.globeSvg.svgGroup.selectAll("." + name)
+  this.globeSVG.svgGroup.selectAll("." + name)
     .remove();
   this.globeSVG.svgGroup.selectAll("." + name + "FOV")
     .remove();
