@@ -1,118 +1,25 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
 
-body {
-  background: #fcfcfa;
-}
-
-.stroke {
-  fill: none;
-  stroke: #000;
-  stroke-width: 3px;
-}
-
-.fill {
-  fill: #fff;
-}
-
-.graticule {
-  fill: none;
-  stroke: #222;
-  stroke-width: .5px;
-  stroke-opacity: .5;
-}
-
-.saskatoonFOV {
-  fill: none;
-  stroke: black;
-  stroke-width: .5px;
-  stroke-opacity: .5;
-}
-
-.saskatoon {
-  fill: none;
-  fill-opacity:1;
-}
-
-.princegeorgeFOV {
-  fill: none;
-  stroke: black;
-  stroke-width: .5px;
-  stroke-opacity: .5;
-}
-
-.princegeorge {
-  fill: none;
-  fill-opacity:1;
-}
-
-.rankinFOV {
-  fill: none;
-  stroke: black;
-  stroke-width: .5px;
-  stroke-opacity: .5;
-}
-
-.rankin {
-  fill: none;
-  fill-opacity:1;
-}
-
-.clydeFOV {
-  fill: none;
-  stroke: black;
-  stroke-width: .5px;
-  stroke-opacity: .5;
-}
-
-.clyde {
-  fill: none;
-  fill-opacity:1;
-}
-
-.inuvikFOV {
-  fill: none;
-  stroke: black;
-  stroke-width: .5px;
-  stroke-opacity: .5;
-}
-
-.inuvik {
-  fill: none;
-  fill-opacity:1;
-}
-
-.land {
-  fill: #777;
-  fill-opacity:0.5;
-}
-
-.boundary {
-  fill: none;
-  stroke: #000;
-  stroke-width: .5px;
-}
-
-</style>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="realtimedisplay.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
 	<script src='http://code.jquery.com/jquery-2.0.3.js'></script>
 </head>
 
 <body>
-	<div id="globediv" style="float:left;height:77vh;width:100%;padding:0;"></div>
-	<div id="options" style="float:right;height:200px;width:50%;">
-			<table style="width:100%;text-align:center;">
+	<div id="globediv" class="globe-style"></div>
+	<div id="options" class="options-style table-responsive">
+			<table id="radartable" class="table-style text-align">
 		  		<tr>
 		  		  <th></th>
-		  		  <th style="text-align:center;color:green;">Saskatoon</th>
-		  		  <th style="text-align:center;color:blue;">Rankin Inlet</th>
-		  		  <th style="text-align:center;color:red;">Prince George</th>
-		  		  <th style="text-align:center;color:purple;">Clyde River</th>
-		  		  <th style="text-align:center;color:orange;">Inuvik</th>
+		  		  <th class="text-align sas-th-color">Saskatoon</th>
+		  		  <th class="text-align rkn-th-color">Rankin Inlet</th>
+		  		  <th class="text-align pgr-th-color">Prince George</th>
+		  		  <th class="text-align cly-th-color">Clyde River</th>
+		  		  <th class="text-align inv-th-color">Inuvik</th>
 		  		</tr>
 		  		<tr>
 		  		  <td>Radar Mode</td>
@@ -147,7 +54,7 @@ body {
 		  		  <td id="inuvikave"></td>	    
 		  		</tr>
 		  		<tr>
-		  		  <td>Range Sep.(km)</td>
+		  		  <td>Noise</td>
 		  		  <td id="saskatoonrsep"></td>
 		  		  <td id="rankinrsep"></td>
 		  		  <td id="princegeorgersep"></td>
@@ -180,17 +87,17 @@ body {
 		  		</tr>
 			</table>
 	</div>
-	<div id="description" style="float:right;height:60px;width:45%;font-size:16px;"></div>
-	<div style="float:right;height:50px;width:50%;">	
-		<form action="" style="text-align: center;bottom:0px;">
+	<div id="description" class="description-style"></div>
+	<div class="radio-div-style">	
+		<form action="" class="radio-form-style text-align">
 		<input type="radio" name="distype" value="pwr">Signal to noise ratio
 		<input type="radio" name="distype" value="width">Spectral width
 		<input type="radio" name="distype" value="velocity" checked="">Velocity
 		<input type="radio" name="distype" value="elevation">Elevation
 		</form>
 	</div>
-	<div style="float:right;height:100px;width:50%">
-		<div id="colorgrad" style="height:50px;width:461px;margin: 0 auto;"></div>
+	<div class="colorgrad-div-style">
+		<div id="colorgrad" class="colorgrad-style"></div>
 	</div>
 </body>
 
