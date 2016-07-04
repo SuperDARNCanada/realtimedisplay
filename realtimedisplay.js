@@ -11,9 +11,30 @@ var radar_coords = {"saskatoon":[-106.53,52.16],
 					"rankin":[-93.11,62.82],
 					"princegeorge":[-122.59,53.98],
 					"clyde":[-68.50,70.49],
-					"inuvik":[-133.772,68.414]};
+					"inuvik":[-133.772,68.414],
+          "blackstone":[-77.950,37.100]};
 
-var sites = ["saskatoon", "rankin", "princegeorge", "inuvik", "clyde"];
+var sites = ["saskatoon", 
+             "rankin", 
+             "princegeorge", 
+             "inuvik", 
+             "clyde",
+             "blackstone"];
+
+var colors = {"saskatoon" : "green", 
+              "rankin" : "blue", 
+              "princegeorge" : "red", 
+              "inuvik":"orange", 
+              "clyde" : "purple",
+              "blackstone" : "cyan"};
+
+var topologyLinks = {"saskatoon" : "http://superdarn.usask.ca/jsondata/sastopojson.json",
+                     "rankin" : "http://superdarn.usask.ca/jsondata/rkntopojson.json",
+                     "princegeorge" : "http://superdarn.usask.ca/jsondata/pgrtopojson.json",
+                     "inuvik" : "http://superdarn.usask.ca/jsondata/invtopojson.json",
+                     "clyde" : "http://superdarn.usask.ca/jsondata/clytopojson.json",
+                     "blackstone" : "http://superdarn.usask.ca/jsondata/clytopojson.json"
+                     };
 
 /*Adding a function to the string prototype to format strings*/
 if (!String.prototype.format) {
@@ -94,10 +115,10 @@ GlobeSVG.prototype.dragged = function(){
     this.projection.rotate(o1);
   }
 
-  this.svgGroup.selectAll(".circles")
-          .remove()
+/*  this.svgGroup.selectAll(".points")
+          .remove();
 
-  this.drawPoints();
+  this.drawPoints();*/
 
 }
 
@@ -175,6 +196,7 @@ GlobeSVG.prototype.createSVGGroup = function() {
   this.svgGroup.append("use")
     .attr("class", "fill")
     .attr("xlink:href", "#sphere");
+}
 
 GlobeSVG.prototype.defineResizeBehavior = function() {
   $().on("resize",function(){
@@ -211,8 +233,6 @@ GlobeSVG.prototype.createMap = function(mapLink){
 
 
 GlobeSVG.prototype.drawPoints = function() {
-  var colors = ["green", "blue", "red", "orange", "purple"];
-
   var self = this;
   var i, len = sites.length;
   for(i=0; i<len; i++){
@@ -220,25 +240,18 @@ GlobeSVG.prototype.drawPoints = function() {
       .datum({"type": "Point","coordinates":radar_coords[sites[i]]})
       .attr("d",this.path.pointRadius(3))
       .attr("class","points")
-      .style("fill",colors[i]);
+      .style("fill",colors[sites[i]]);
    
   }
 
 }
 
 function Topology() {
-  var topologyLinks = ["http://superdarn.usask.ca/jsondata/sastopojson.json",
-                       "http://superdarn.usask.ca/jsondata/rkntopojson.json",
-                       "http://superdarn.usask.ca/jsondata/pgrtopojson.json",
-                       "http://superdarn.usask.ca/jsondata/invtopojson.json",
-                       "http://superdarn.usask.ca/jsondata/clytopojson.json",
-                       ];
-
   this.topologies = {};
 
   var i,len = topologyLinks.length;
   for(i=0; i<len; i++){
-    this.getTopologyData(topologyLinks[i],sites[i]);
+    this.getTopologyData(topologyLinks[sites[i]],sites[i]);
   }
 
 }
@@ -690,11 +703,12 @@ function zeroPad(num, places) {
 }
 
 function RadarConnections(interactivityObj,globeSVG){
-  var websocketAddresses = ['ws://128.233.224.43:5005',
-                            'ws://128.233.224.43:5006',
-                            'ws://128.233.224.43:5007',
-                            'ws://128.233.224.43:5009',
-                            'ws://128.233.224.43:5008'];
+  var websocketAddresses = ['ws://128.233.224.43:5100',
+                            'ws://128.233.224.43:5101',
+                            'ws://128.233.224.43:5102',
+                            'ws://128.233.224.43:5103',
+                            'ws://128.233.224.43:5104',
+                            ];
 
   this.radarConnections = {};
   var new_i,i,len = sites.length;
