@@ -6,35 +6,49 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
+var sites = {"saskatoon": {
+                        "coords" : [-106.53,52.16],
+                        "color" : "green",
+                        "link" : "http://superdarn.usask.ca/jsondata/sastopojson.json",
+                        "address" : 'ws://128.233.224.43:5100'
+                        },
 
-var radar_coords = {"saskatoon":[-106.53,52.16],
-					"rankin":[-93.11,62.82],
-					"princegeorge":[-122.59,53.98],
-					"clyde":[-68.50,70.49],
-					"inuvik":[-133.772,68.414],
-          "blackstone":[-77.950,37.100]};
+             "rankin": {
+                        "coords" : [-93.11,62.82],
+                        "color" : "blue",
+                        "link" : "http://superdarn.usask.ca/jsondata/rkntopojson.json",
+                        "address" : 'ws://128.233.224.43:5101'
+                        },
 
-var sites = ["saskatoon", 
-             "rankin", 
-             "princegeorge", 
-             "inuvik", 
-             "clyde",
-             "blackstone"];
+             "princegeorge": {
+                        "coords" : [-122.59,53.98],
+                        "color" : "red",
+                        "link" : "http://superdarn.usask.ca/jsondata/pgrtopojson.json",
+                        "address" : "ws://128.233.224.43:5102"
+                        },
 
-var colors = {"saskatoon" : "green", 
-              "rankin" : "blue", 
-              "princegeorge" : "red", 
-              "inuvik":"orange", 
-              "clyde" : "purple",
-              "blackstone" : "cyan"};
+             "inuvik": {
+                        "coords" : [-133.772,68.414],
+                        "color" : "orange",
+                        "link" : "http://superdarn.usask.ca/jsondata/invtopojson.json",
+                        "address" : "ws://128.233.224.43:5104"
+                        },
 
-var topologyLinks = {"saskatoon" : "http://superdarn.usask.ca/jsondata/sastopojson.json",
-                     "rankin" : "http://superdarn.usask.ca/jsondata/rkntopojson.json",
-                     "princegeorge" : "http://superdarn.usask.ca/jsondata/pgrtopojson.json",
-                     "inuvik" : "http://superdarn.usask.ca/jsondata/invtopojson.json",
-                     "clyde" : "http://superdarn.usask.ca/jsondata/clytopojson.json",
-                     "blackstone" : "http://superdarn.usask.ca/jsondata/clytopojson.json"
-                     };
+             "clyde": {
+                        "coords" : [-68.50,70.49],
+                        "color" : "purple",
+                        "link" : "http://superdarn.usask.ca/jsondata/clytopojson.json",
+                        "address" : "ws://128.233.224.43:5103"
+                        },
+
+             "blackstone": {
+                        "coords" : [-77.950,37.100],
+                        "color" : "cyan",
+                        "link" : "http://superdarn.usask.ca/jsondata/bkstopojson.json",
+                        "address" : "ws://128.233.224.43:5105"
+                        }
+              };
+
 
 /*Adding a function to the string prototype to format strings*/
 if (!String.prototype.format) {
@@ -207,13 +221,9 @@ GlobeSVG.prototype.defineResizeBehavior = function() {
 }
 
 GlobeSVG.prototype.createMap = function(mapLink){
-/*  var returnPath = function(){return this.path}.bind(this);
-*/
   var self = this;
   d3.json(mapLink, function(error, topo_world) {
     if (error) throw error;
-
-    /*var path = returnPath();*/
 
     self.svgGroup.append("path")
         .datum(topojson.feature(topo_world, topo_world.objects.world))
@@ -234,14 +244,14 @@ GlobeSVG.prototype.createMap = function(mapLink){
 
 GlobeSVG.prototype.drawPoints = function() {
   var self = this;
-  var i, len = sites.length;
-  for(i=0; i<len; i++){
-    this.svgGroup.append("path")
-      .datum({"type": "Point","coordinates":radar_coords[sites[i]]})
-      .attr("d",this.path.pointRadius(3))
-      .attr("class","points")
-      .style("fill",colors[sites[i]]);
-   
+    for(var site in sites){
+      if(!sites.hasOwnProperty(key)) continue;
+
+      this.svgGroup.append("path")
+        .datum({"type": "Point","coordinates":sites[site]["coords"]})
+        .attr("d",this.path.pointRadius(3))
+        .attr("class","points")
+        .style("fill",sites[key]["color"]);
   }
 
 }
@@ -249,9 +259,8 @@ GlobeSVG.prototype.drawPoints = function() {
 function Topology() {
   this.topologies = {};
 
-  var i,len = topologyLinks.length;
-  for(i=0; i<len; i++){
-    this.getTopologyData(topologyLinks[sites[i]],sites[i]);
+  for(var site in sites){
+    this.getTopologyData(sites[site]["link"],site);
   }
 
 }
@@ -269,23 +278,6 @@ Topology.prototype.getTopologyData = function(link,location){
 
   }.bind(this));
 }
-
-/**
-Creating a new svg and projection for the globe
-*/
-
-
-/**
-Grabbing the topojson objects for the globe
-*/
-
-/**
-Creating a new svg for the color gradient legend
-*/
-
-/**
-Functions related to the zooming and rotating of the map
-*/
 
 
 
@@ -483,10 +475,9 @@ function Interactivity(gradient,globeSVG,topology){
   this.displayColorLegend(this.gradientObj);
   $("#description").text("Plasma drift velocity along the beam direction (blue – towards the radar; red – away from the radar; grey for ground scatter).");
   this.defineParameterTypeSwitching();
-  var i,len=sites.length;
 
-  for(i=0; i<len;i++){
-    this.defineRadarButtonAction(sites[i]);
+  for(site in sites){
+    this.defineRadarButtonAction(site);
   }
 
 }
@@ -703,29 +694,22 @@ function zeroPad(num, places) {
 }
 
 function RadarConnections(interactivityObj,globeSVG){
-  var websocketAddresses = ['ws://128.233.224.43:5100',
-                            'ws://128.233.224.43:5101',
-                            'ws://128.233.224.43:5102',
-                            'ws://128.233.224.43:5103',
-                            'ws://128.233.224.43:5104',
-                            ];
-
   this.radarConnections = {};
-  var new_i,i,len = sites.length;
   var self = this;
 
-  var onMessageFunctions = [];
+  var onMessageFunctions = {};
 
   /*IFFE to correctly rectify scope of the loop variable in a closure*/
-  for(new_i=0; new_i<len; new_i++){
+  for(var site in sites){
     (function(i){
-      onMessageFunctions[i] = function(evt){self.on_message(evt,sites[i],interactivityObj,globeSVG);};
-    })(new_i);
+      onMessageFunctions[i] = function(evt){self.on_message(evt,i,interactivityObj,globeSVG);};
+    })(site);
   }
 
-  for(i=0; i<len; i++){
-    this.createWebsocket(sites[i],websocketAddresses[i]);
-    this.radarConnections[sites[i]].onmessage = onMessageFunctions[i];
+  for(var site in sites){
+    console.log(sites[site]["address"]);
+    this.createWebsocket(site,sites[site]["address"]);
+    this.radarConnections[site].onmessage = onMessageFunctions[site];
   }
 
 
