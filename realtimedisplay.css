@@ -20,14 +20,24 @@ body {
   stroke-opacity: .5;
 }
 
-.saskatoonFOV, .princegeorgeFOV, .rankinFOV, .clydeFOV, .inuvikFOV {
+.saskatoonFOV, 
+.princegeorgeFOV, 
+.rankinFOV, 
+.clydeFOV, 
+.inuvikFOV,
+.blackstoneFOV{
   fill: none;
   stroke: black;
   stroke-width: .5px;
   stroke-opacity: .5;
 }
 
-.saskatoon, .princegeorge, .rankin, .clyde, .inuvik  {
+.saskatoon, 
+.princegeorge, 
+.rankin, 
+.clyde, 
+.inuvik
+.blackstone  {
   fill: none;
   fill-opacity:1;
 }
@@ -65,6 +75,10 @@ body {
 
 .inv-th-color{
   color:orange;
+}
+
+.bks-th-color{
+  color:cyan;
 }
 
 .table-style{
