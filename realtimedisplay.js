@@ -174,6 +174,10 @@ GlobeSVG.prototype.zoomFunction = function (){
       .attr("d", this.path);
     this.svgGroup.selectAll(".inuvikFOV")
       .attr("d", this.path);
+    this.svgGroup.selectAll(".blackstone")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".blackstoneFOV")
+      .attr("d", this.path);
     this.svgGroup.selectAll("#sphere")
       .attr("d", this.path);
     this.svgGroup.selectAll(".points")
@@ -245,7 +249,7 @@ GlobeSVG.prototype.createMap = function(mapLink){
 GlobeSVG.prototype.drawPoints = function() {
   var self = this;
     for(var site in sites){
-      if(!sites.hasOwnProperty(key)) continue;
+      if(!sites.hasOwnProperty(site)) continue;
 
       this.svgGroup.append("path")
         .datum({"type": "Point","coordinates":sites[site]["coords"]})
