@@ -192,6 +192,14 @@ GlobeSVG.prototype.zoomFunction = function (){
       .attr("d", this.path);
     this.svgGroup.selectAll(".blackstoneFOV")
       .attr("d", this.path);
+    this.svgGroup.selectAll(".forthayeseast")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".forthayeseastFOV")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".forthayeswest")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".forthayeswestFOV")
+      .attr("d", this.path);
     this.svgGroup.selectAll("#sphere")
       .attr("d", this.path);
     this.svgGroup.selectAll(".points")
