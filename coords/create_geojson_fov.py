@@ -26,11 +26,11 @@ def main():
 	        #print beam, gate,myFov.latFull[beam,gate],myFov.latFull[beam+1,gate],myFov.latFull[beam,gate+1], myFov.latFull[beam+1,gate+1],myFov.lonFull[beam,gate],myFov.lonFull[beam+1,j],myFov.lonFull[i,j+1], myFov.lonFull[i+1,gate+1]
 			coords.append((myFov.lonFull[beam,gate],myFov.latFull[beam,gate]))
 			coords.append((myFov.lonFull[beam+1,gate],myFov.latFull[beam+1,gate]))
-			coords.append((myFov.lonFull[beam,gate+1],myFov.latFull[beam,gate+1]))
 			coords.append((myFov.lonFull[beam+1,gate+1],myFov.latFull[beam+1,gate+1]))
+			coords.append((myFov.lonFull[beam,gate+1],myFov.latFull[beam,gate+1]))
 			coords.append((myFov.lonFull[beam,gate],myFov.latFull[beam,gate]))
 
-			polys.append(geojson.Feature(geometry=geojson.Polygon(coords),id=str(beam).zfill(2)+str(gate).zfill(2)))
+			polys.append(geojson.Feature(geometry=geojson.Polygon([coords]),id=str(beam).zfill(2)+str(gate).zfill(2)))
 	# sask_polys = []
 	# cs = []
 
