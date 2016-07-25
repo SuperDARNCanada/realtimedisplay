@@ -3,6 +3,10 @@ body {
   background: #fcfcfa;
 }
 
+td {
+  min-width: 100px;
+}
+
 .stroke {
   fill: none;
   stroke: #000;
@@ -25,7 +29,9 @@ body {
 .rankinFOV, 
 .clydeFOV, 
 .inuvikFOV,
-.blackstoneFOV{
+.blackstoneFOV,
+.forthayeseastFOV
+.forthayeswestFOV {
   fill: none;
   stroke: black;
   stroke-width: .5px;
@@ -37,7 +43,9 @@ body {
 .rankin, 
 .clyde, 
 .inuvik,
-.blackstone  {
+.blackstone,
+.forthayeseast,
+.forthayeswest  {
   fill: none;
   fill-opacity:1;
 }
@@ -79,6 +87,14 @@ body {
 
 .bks-th-color{
   color:cyan;
+}
+
+.fhe-th-color{
+  color:brown;
+}
+
+.fhw-th-color{
+  color:midnightblue;
 }
 
 .table-style{
