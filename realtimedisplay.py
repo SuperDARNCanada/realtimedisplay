@@ -128,9 +128,10 @@ def create_json_packet(dmap_dict):
 		for pwr,s in zip(pwrs,slist):
 			pwr_css[s] = convert_power_to_css(pwr)
 
-		elevs = dmap_dict['elv']
-		for elev,s in zip(elevs,slist):
-			elev_css[s] = convert_elevation_to_css(elev)
+		if 'elv' in dmap_dict:
+			elevs = dmap_dict['elv']
+			for elev,s in zip(elevs,slist):
+				elev_css[s] = convert_elevation_to_css(elev)
 
 		vels = dmap_dict['v']
 		gsct = dmap_dict['gflg']
