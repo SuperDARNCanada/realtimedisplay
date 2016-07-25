@@ -46,6 +46,20 @@ var sites = {"saskatoon": {
                         "color" : "cyan",
                         "link" : "http://superdarn.usask.ca/jsondata/bkstopojson.json",
                         "address" : "ws://128.233.224.43:5105"
+                        },
+
+             "forthayeseast": {
+                        "coords" : [-99.389,38.859],
+                        "color" : "brown",
+                        "link" : "http://superdarn.usask.ca/jsondata/fhetopojson.json",
+                        "address" : "ws://128.233.224.43:5106"
+                        },
+
+             "forthayeswest": {
+                        "coords" : [-99.389,38.859],
+                        "color" : "midnightblue",
+                        "link" : "http://superdarn.usask.ca/jsondata/fhetopojson.json",
+                        "address" : "ws://128.233.224.43:5107"
                         }
               };
 
@@ -255,7 +269,7 @@ GlobeSVG.prototype.drawPoints = function() {
         .datum({"type": "Point","coordinates":sites[site]["coords"]})
         .attr("d",this.path.pointRadius(3))
         .attr("class","points")
-        .style("fill",sites[key]["color"]);
+        .style("fill",sites[site]["color"]);
   }
 
 }
@@ -711,7 +725,6 @@ function RadarConnections(interactivityObj,globeSVG){
   }
 
   for(var site in sites){
-    console.log(sites[site]["address"]);
     this.createWebsocket(site,sites[site]["address"]);
     this.radarConnections[site].onmessage = onMessageFunctions[site];
   }
