@@ -526,6 +526,12 @@ Interactivity.prototype.defineParameterTypeSwitching = function() {
           .style("fill","transparent");
        self.globeSVG.svgGroup.selectAll(".inuvik")
           .style("fill","transparent");
+       self.globeSVG.svgGroup.selectAll(".blackstone")
+       .style("fill","transparent");
+       self.globeSVG.svgGroup.selectAll(".forthayeseast")
+       .style("fill","transparent");
+       self.globeSVG.svgGroup.selectAll(".forthayeswest")
+       .style("fill","transparent");
 
        switch(self.displayType){
           case "velocity": 
