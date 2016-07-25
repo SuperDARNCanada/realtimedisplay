@@ -116,7 +116,6 @@ def convert_cp_to_text(cp):
 
 
 def create_json_packet(dmap_dict):
-	print(dmap_dict.keys())
 	try:
 		pwr_css = ["transparent"] * dmap_dict['nrang']
 		elev_css = ["transparent"] * dmap_dict['nrang']
@@ -137,7 +136,7 @@ def create_json_packet(dmap_dict):
 		vels = dmap_dict['v']
 		gsct = dmap_dict['gflg']
 		for vel,s,g in zip(vels,slist,gsct):
-			vel_css[s] = convert_velocity_to_css(elev,g)
+			vel_css[s] = convert_velocity_to_css(vel,g)
 
 		widths = dmap_dict['w_l']
 		for width,s in zip(widths,slist):

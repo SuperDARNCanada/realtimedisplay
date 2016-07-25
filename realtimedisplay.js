@@ -49,14 +49,14 @@ var sites = {"saskatoon": {
                         },
 
              "forthayeseast": {
-                        "coords" : [-99.380,38.859],
+                        "coords" : [-99.700,38.859],
                         "color" : "brown",
                         "link" : "http://superdarn.usask.ca/jsondata/fhetopojson.json",
                         "address" : "ws://128.233.224.43:5106"
                         },
 
              "forthayeswest": {
-                        "coords" : [-99.400,38.859],
+                        "coords" : [-99.200,38.859],
                         "color" : "midnightblue",
                         "link" : "http://superdarn.usask.ca/jsondata/fhwtopojson.json",
                         "address" : "ws://128.233.224.43:5107"
