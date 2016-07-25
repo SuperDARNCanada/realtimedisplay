@@ -116,6 +116,7 @@ def convert_cp_to_text(cp):
 
 
 def create_json_packet(dmap_dict):
+	print(dmap_dict.keys())
 	try:
 		pwr_css = ["transparent"] * dmap_dict['nrang']
 		elev_css = ["transparent"] * dmap_dict['nrang']
