@@ -30,8 +30,8 @@ td {
 .clydeFOV, 
 .inuvikFOV,
 .blackstoneFOV,
-.forthayeseastFOV,
-.forthayeswestFOV {
+.forthayseastFOV,
+.forthayswestFOV {
   fill: none;
   stroke: black;
   stroke-width: .5px;
@@ -44,8 +44,8 @@ td {
 .clyde, 
 .inuvik,
 .blackstone,
-.forthayeseast,
-.forthayeswest  {
+.forthayseast,
+.forthayswest  {
   fill: none;
   fill-opacity:1;
 }

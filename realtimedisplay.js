@@ -48,14 +48,14 @@ var sites = {"saskatoon": {
                         "address" : "ws://128.233.224.43:5105"
                         },
 
-             "forthayeseast": {
+             "forthayseast": {
                         "coords" : [-99.380,38.859],
                         "color" : "brown",
                         "link" : "http://superdarn.usask.ca/jsondata/fhetopojson.json",
                         "address" : "ws://128.233.224.43:5106"
                         },
 
-             "forthayeswest": {
+             "forthayswest": {
                         "coords" : [-99.400,38.859],
                         "color" : "midnightblue",
                         "link" : "http://superdarn.usask.ca/jsondata/fhwtopojson.json",
@@ -192,13 +192,13 @@ GlobeSVG.prototype.zoomFunction = function (){
       .attr("d", this.path);
     this.svgGroup.selectAll(".blackstoneFOV")
       .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayeseast")
+    this.svgGroup.selectAll(".forthayseast")
       .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayeseastFOV")
+    this.svgGroup.selectAll(".forthayseastFOV")
       .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayeswest")
+    this.svgGroup.selectAll(".forthayswest")
       .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayeswestFOV")
+    this.svgGroup.selectAll(".forthayswestFOV")
       .attr("d", this.path);
     this.svgGroup.selectAll("#sphere")
       .attr("d", this.path);
@@ -528,9 +528,9 @@ Interactivity.prototype.defineParameterTypeSwitching = function() {
           .style("fill","transparent");
        self.globeSVG.svgGroup.selectAll(".blackstone")
        .style("fill","transparent");
-       self.globeSVG.svgGroup.selectAll(".forthayeseast")
+       self.globeSVG.svgGroup.selectAll(".forthayseast")
        .style("fill","transparent");
-       self.globeSVG.svgGroup.selectAll(".forthayeswest")
+       self.globeSVG.svgGroup.selectAll(".forthayswest")
        .style("fill","transparent");
 
        switch(self.displayType){
