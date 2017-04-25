@@ -2,10 +2,10 @@
 A full-stack web application to view radar data in realtime
 
 
-##Details
+## Details
 This display was designed for the SuperDARN Canada website and associated radars, but other institutions can modify it for their sites as well. This is a full stack project with both a front end and backend component.
 
-###Server
+### Server
 The server is responsible for acting as a proxy to the radars, so that clients don't have direct connections to the radars. This is partly to hide the ip addresses from the clients, and partly to offload the connection and reconnection logic, and value-to-color translation from the browser. The server maintains connections to the radars, and translates the dmap records into associated CSS color values for radar field of view range cells in the browser. It does this by mapping a gradient of colors to values in a range, and creating a JSON packet which it sends out to the clients. The server is written in Python and requires a copy of pydmap in the directory as well.The original backend to this application was written in C, but after finding many bugs, I wrote the server in Python after creating pydmap. This has led to a drastically more reliable backend. Increased error checking is done in the dmap routine which prevents crashes from corrupted socket data, which does happen.
 
 Each instance of the server program controls a single radar so that if a crash happens, it doesnt affect the other radars. Each instance has two threads of controlling logic. One thread controls the connections to the radars, and another controls connections from web clients. 
@@ -20,7 +20,7 @@ I've tried to safely handle has many errors as possible, but should an unknown e
 
 Most browsers do not accept raw socket connections, but instead use a wrapped form called Websockets. Included in the package is a tcpip socket to websocket proxy that can be started with a script. Each radar requires its own instance of the proxy.
 
-###Client
+### Client
 
 The real time display client heavily uses the framework [D3.js](https://d3js.org/) to display data, so understanding how that framework works is critical. I mainly use the map display capabilities of D3.js to build an interactive globe that shows the radar fields of view. 
 
@@ -35,13 +35,13 @@ logic was added to be able to scale the graphic allowing for a zoom feature.
 
 With the map created, the client then makes socket connections back to the web server for range cell data. The client grabs JSON objects filled with CSS color values for all of the data types. When the client grabs new color data, it then colors in the corresponding range cells of each field of view that is displayed on the map. There is logic to allow the user to be able to switch what parameter they are viewing. If a parameter is switched, all range cells are cleared and they begin to fill with the colors corresponding to the new parameter.
 
-###Extending the realtime display
+### Extending the realtime display
 
 Extending the realtime display is very possible. It would require some work, but to add a new radar is a matter of adding new connections to the web server, converting its field of view coordinates into TopoJSON objects using the procedure
 outlined above, and then updating the client to create a new socket connection and display the new radar.
 
 
-###Improving the realtime display
+### Improving the realtime display
 
 The rendering of the globe on zoom or rotate requires quite a bit of performance.The more radars displayed, the more choppy the zoom or rotation. D3.js is quitegood at working on sets of data or objects at once, so I think one area of 
 improvement would be to better class together radar field of view polygons so that it can optimize the redraw and coloring better.
