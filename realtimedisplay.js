@@ -10,56 +10,56 @@ var sites = {"saskatoon": {
                         "coords" : [-106.53,52.16],
                         "color" : "green",
                         "link" : "http://superdarn.usask.ca/jsondata/sastopojson.json",
-                        "address" : 'ws://128.233.224.43:5100'
+                        "address" : 'ws://128.233.224.38:5100'
                         },
 
              "rankin": {
                         "coords" : [-93.11,62.82],
                         "color" : "blue",
                         "link" : "http://superdarn.usask.ca/jsondata/rkntopojson.json",
-                        "address" : 'ws://128.233.224.43:5101'
+                        "address" : 'ws://128.233.224.38:5101'
                         },
 
              "princegeorge": {
                         "coords" : [-122.59,53.98],
                         "color" : "red",
                         "link" : "http://superdarn.usask.ca/jsondata/pgrtopojson.json",
-                        "address" : "ws://128.233.224.43:5102"
+                        "address" : "ws://128.233.224.38:5102"
                         },
 
              "inuvik": {
                         "coords" : [-133.772,68.414],
                         "color" : "orange",
                         "link" : "http://superdarn.usask.ca/jsondata/invtopojson.json",
-                        "address" : "ws://128.233.224.43:5104"
+                        "address" : "ws://128.233.224.38:5104"
                         },
 
              "clyde": {
                         "coords" : [-68.50,70.49],
                         "color" : "purple",
                         "link" : "http://superdarn.usask.ca/jsondata/clytopojson.json",
-                        "address" : "ws://128.233.224.43:5103"
+                        "address" : "ws://128.233.224.38:5103"
                         },
 
              "blackstone": {
                         "coords" : [-77.950,37.100],
                         "color" : "cyan",
                         "link" : "http://superdarn.usask.ca/jsondata/bkstopojson.json",
-                        "address" : "ws://128.233.224.43:5105"
+                        "address" : "ws://128.233.224.38:5105"
                         },
 
              "forthayseast": {
                         "coords" : [-99.700,38.859],
                         "color" : "brown",
                         "link" : "http://superdarn.usask.ca/jsondata/fhetopojson.json",
-                        "address" : "ws://128.233.224.43:5106"
+                        "address" : "ws://128.233.224.38:5106"
                         },
                     
              "forthayswest": {
                         "coords" : [-99.300,38.859],
                         "color" : "midnightblue",
                         "link" : "http://superdarn.usask.ca/jsondata/fhwtopojson.json",
-                        "address" : "ws://128.233.224.43:5107"
+                        "address" : "ws://128.233.224.38:5107"
                         }
               };
 
