@@ -27,18 +27,18 @@ var sites = {"saskatoon": {
                         "address" : "ws://128.233.224.38:5102"
                         },
 
-             "inuvik": {
-                        "coords" : [-133.772,68.414],
-                        "color" : "orange",
-                        "link" : "http://superdarn.usask.ca/jsondata/invtopojson.json",
-                        "address" : "ws://128.233.224.38:5104"
-                        },
-
              "clyde": {
                         "coords" : [-68.50,70.49],
                         "color" : "purple",
                         "link" : "http://superdarn.usask.ca/jsondata/clytopojson.json",
                         "address" : "ws://128.233.224.38:5103"
+                        },
+
+             "inuvik": {
+                        "coords" : [-133.772,68.414],
+                        "color" : "orange",
+                        "link" : "http://superdarn.usask.ca/jsondata/invtopojson.json",
+                        "address" : "ws://128.233.224.38:5104"
                         },
 
              "blackstone": {
@@ -54,12 +54,40 @@ var sites = {"saskatoon": {
                         "link" : "http://superdarn.usask.ca/jsondata/fhetopojson.json",
                         "address" : "ws://128.233.224.38:5106"
                         },
-                    
+
              "forthayswest": {
                         "coords" : [-99.300,38.859],
                         "color" : "midnightblue",
                         "link" : "http://superdarn.usask.ca/jsondata/fhwtopojson.json",
                         "address" : "ws://128.233.224.38:5107"
+                        },
+
+             "kapuskasing": {
+                        "coords" : [-82.32,49.39],
+                        "color" : "coral",
+                        "link" : "http://superdarn.usask.ca/jsondata/gbrtopojson.json",
+                        "address" : "ws://128.233.224.38:5108"
+                        },
+
+             "goosebay": {
+                        "coords" : [-60.46,53.32],
+                        "color" : "chartreuse",
+                        "link" : "http://superdarn.usask.ca/jsondata/gbrtopojson.json",
+                        "address" : "ws://128.233.224.38:5109"
+                        },
+
+             "christmasvalleyeast": {
+                        "coords" : [-120.560,43.27],
+                        "color" : "palegreen",
+                        "link" : "http://superdarn.usask.ca/jsondata/cvetopojson.json",
+                        "address" : "ws://128.233.224.38:5110"
+                        },
+
+             "christmasvalleywest": {
+                        "coords" : [-120.160,43.27],
+                        "color" : "thistle",
+                        "link" : "http://superdarn.usask.ca/jsondata/cvwtopojson.json",
+                        "address" : "ws://128.233.224.38:5111"
                         }
               };
 
@@ -68,7 +96,7 @@ var sites = {"saskatoon": {
 if (!String.prototype.format) {
   String.prototype.format = function() {
     var args = arguments;
-    return this.replace(/{(\d+)}/g, function(match, number) { 
+    return this.replace(/{(\d+)}/g, function(match, number) {
       return typeof args[number] != 'undefined'
         ? args[number]
         : match
@@ -168,7 +196,13 @@ GlobeSVG.prototype.zoomFunction = function (){
       .attr("d", this.path);
     this.svgGroup.selectAll(".boundary")
       .attr("d", this.path);
-    this.svgGroup.selectAll(".saskatoon")
+    for (site in sites) {
+      this.svgGroup.selectAll("." + site)
+        .attr("d", this.path);
+      this.svgGroup.selectAll("." + site + "FOV")
+        .attr("d", this.path);
+    }
+/*    this.svgGroup.selectAll(".saskatoon")
       .attr("d", this.path);
     this.svgGroup.selectAll(".saskatoonFOV")
       .attr("d", this.path);
@@ -200,6 +234,22 @@ GlobeSVG.prototype.zoomFunction = function (){
       .attr("d", this.path);
     this.svgGroup.selectAll(".forthayswestFOV")
       .attr("d", this.path);
+    this.svgGroup.selectAll(".kapuskasing")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".kapuskasingFOV")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".goosebay")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".goosebayFOV")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".christmasvalleyeast")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".christmasvalleyeastFOV")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".christmasvalleywest")
+      .attr("d", this.path);
+    this.svgGroup.selectAll(".christmasvalleywestFOV")
+      .attr("d", this.path);*/
     this.svgGroup.selectAll("#sphere")
       .attr("d", this.path);
     this.svgGroup.selectAll(".points")
@@ -255,7 +305,7 @@ GlobeSVG.prototype.createMap = function(mapLink){
         .datum(topojson.feature(topo_world, topo_world.objects.world))
         .attr("class", "land")
         .attr("d",self.path);
-  
+
     self.svgGroup.append("path")
         .datum(topojson.mesh(topo_world, topo_world.objects.world, function(a, b) { return a !== b; }))
         .attr("class", "boundary")
@@ -310,7 +360,7 @@ Topology.prototype.getTopologyData = function(link,location){
 /***** ALL MATH FUNCTIONS ****/
 
 function RotationMath(){
-/***** MAP ROTATION CODE TAKEN FROM 
+/***** MAP ROTATION CODE TAKEN FROM
 http://bl.ocks.org/ivycodes/7c94cb5a3accd9913263
 ***/
 }
@@ -326,7 +376,7 @@ RotationMath.dot = function(v0, v1) {
     return sum;
 }
 
-// This function converts a [lon, lat] coordinates into a [x,y,z] coordinate 
+// This function converts a [lon, lat] coordinates into a [x,y,z] coordinate
 // the [x, y, z] is Cartesian, with origin at lon/lat (0,0) center of the earth
 RotationMath.lonlat2xyz = function( coord ){
 
@@ -349,17 +399,17 @@ RotationMath.lonlat2xyz = function( coord ){
 RotationMath.quaternion = function(v0, v1) {
 
   if (v0 && v1) {
-    
+
       var w = RotationMath.cross(v0, v1),  // vector pendicular to v0 & v1
-          w_len = Math.sqrt(RotationMath.dot(w, w)); // length of w     
+          w_len = Math.sqrt(RotationMath.dot(w, w)); // length of w
 
         if (w_len == 0)
           return;
 
         var theta = .5 * Math.acos(Math.max(-1, Math.min(1, RotationMath.dot(v0, v1)))),
 
-          qi  = w[2] * Math.sin(theta) / w_len; 
-          qj  = - w[1] * Math.sin(theta) / w_len; 
+          qi  = w[2] * Math.sin(theta) / w_len;
+          qj  = - w[1] * Math.sin(theta) / w_len;
           qk  = w[0]* Math.sin(theta) / w_len;
           qr  = Math.cos(theta);
 
@@ -373,7 +423,7 @@ RotationMath.euler2quat = function(e) {
 
   var to_radians = Math.PI / 180;
   if(!e) return;
-    
+
     var roll = .5 * e[0] * to_radians,
         pitch = .5 * e[1] * to_radians,
         yaw = .5 * e[2] * to_radians,
@@ -423,8 +473,8 @@ RotationMath.quat2euler = function(t){
   var to_degrees = 180 / Math.PI;
   if(!t) return;
 
-  return [ Math.atan2(2 * (t[0] * t[1] + t[2] * t[3]), 1 - 2 * (t[1] * t[1] + t[2] * t[2])) * to_degrees, 
-       Math.asin(Math.max(-1, Math.min(1, 2 * (t[0] * t[2] - t[3] * t[1])))) * to_degrees, 
+  return [ Math.atan2(2 * (t[0] * t[1] + t[2] * t[3]), 1 - 2 * (t[1] * t[1] + t[2] * t[2])) * to_degrees,
+       Math.asin(Math.max(-1, Math.min(1, 2 * (t[0] * t[2] - t[3] * t[1])))) * to_degrees,
        Math.atan2(2 * (t[0] * t[3] + t[1] * t[2]), 1 - 2 * (t[2] * t[2] + t[3] * t[3])) * to_degrees
       ]
 }
@@ -446,7 +496,7 @@ RotationMath.eulerAngles = function(v0, v1, o0) {
   */
 
   var t = RotationMath.quatMultiply( RotationMath.euler2quat(o0), RotationMath.quaternion(RotationMath.lonlat2xyz(v0), RotationMath.lonlat2xyz(v1) ) );
-  return RotationMath.quat2euler(t); 
+  return RotationMath.quat2euler(t);
 }
 
 
@@ -514,9 +564,13 @@ Interactivity.prototype.defineParameterTypeSwitching = function() {
   var self = this;
 
     $('input[type=radio][name=distype]').change(function() {
-       self.displayType = this.value;
-       self.displayColorLegend(self.gradientObj);
-       self.globeSVG.svgGroup.selectAll(".saskatoon")
+      self.displayType = this.value;
+      self.displayColorLegend(self.gradientObj);
+      for (site in sites){
+        self.globeSVG.svgGroup.selectAll("." + site)
+          .style("fill","transparent");
+      }
+/*       self.globeSVG.svgGroup.selectAll(".saskatoon")
           .style("fill","transparent");
        self.globeSVG.svgGroup.selectAll(".rankin")
           .style("fill","transparent");
@@ -532,19 +586,27 @@ Interactivity.prototype.defineParameterTypeSwitching = function() {
        .style("fill","transparent");
        self.globeSVG.svgGroup.selectAll(".forthayswest")
        .style("fill","transparent");
+              self.globeSVG.svgGroup.selectAll(".kapuskasing")
+       .style("fill","transparent");
+              self.globeSVG.svgGroup.selectAll(".goosebay")
+       .style("fill","transparent");
+              self.globeSVG.svgGroup.selectAll(".christmasvalleyeast")
+       .style("fill","transparent");
+              self.globeSVG.svgGroup.selectAll(".christmasvalleywest")
+       .style("fill","transparent");*/
 
        switch(self.displayType){
-          case "velocity": 
-            $("#description").text("Plasma drift velocity along the beam direction (blue – towards the radar; red – away from the radar; grey for ground scatter)."); 
+          case "velocity":
+            $("#description").text("Plasma drift velocity along the beam direction (blue – towards the radar; red – away from the radar; grey for ground scatter).");
             break;
           case "pwr":
-            $("#description").text("Ratio of the radar echo power to that of the atmospheric noise."); 
+            $("#description").text("Ratio of the radar echo power to that of the atmospheric noise.");
             break;
           case "width":
-            $("#description").text("Larger spectral width usually indicates more perturbed plasma."); 
+            $("#description").text("Larger spectral width usually indicates more perturbed plasma.");
             break;
           case "elevation":
-              $("#description").text("Vertical angle of arrival of the radar echoes measured from the horizon."); 
+              $("#description").text("Vertical angle of arrival of the radar echoes measured from the horizon.");
             break;
        }
 
@@ -592,7 +654,7 @@ Interactivity.prototype.displayColorLegend = function(gradientObj){
   gradientObj.colorgrad.selectAll('g')
            .remove();
 
-  if(this.displayType == "velocity"){         
+  if(this.displayType == "velocity"){
 
     gradientObj.gradient.append('stop')
       .attr('offset',"0%")
@@ -634,10 +696,10 @@ Interactivity.prototype.displayColorLegend = function(gradientObj){
   }
 
   var g = gradientObj.colorgrad.append('g')
-        .selectAll('.label')  
+        .selectAll('.label')
         .data(color_data)
         .enter();
-      
+
   g.append('line')
     .style('stroke', function(d) {
       return d.color;
@@ -655,8 +717,8 @@ Interactivity.prototype.displayColorLegend = function(gradientObj){
      .attr('y2',function(d,i){
       return document.getElementById("colorgrad").clientHeight;
     });
-        
-    
+
+
   g.append('text')
     .text(function(d){
       return d.label;
@@ -664,7 +726,7 @@ Interactivity.prototype.displayColorLegend = function(gradientObj){
     .attr('transform',function(d,i){
       return 'translate(' + (xPos(i) + 3) + ',' + (document.getElementById("colorgrad").clientHeight - 7) + ')';
     })
-        
+
     function xPos(i){
       switch(i){
         case 0: return 2
@@ -672,7 +734,7 @@ Interactivity.prototype.displayColorLegend = function(gradientObj){
         case 2: return 415 * .66;
         case 3: return 413;
       }
-    }   
+    }
 }
 
 Interactivity.prototype.displayRadar = function(name){
@@ -711,7 +773,7 @@ Interactivity.prototype.defineRadarButtonAction = function(name){
       }
       else{
         self.removeRadar(name);
-      }     
+      }
    });
 }
 
@@ -756,7 +818,7 @@ RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,glob
     var received_data = reader.result;
     json_data = JSON.parse(received_data);
     radar_ranges = json_data.nrang;
-    
+
     var data_array = [];
     switch(interactivityObj.displayType){
         case "pwr": data_array = json_data.power; break;
@@ -779,7 +841,7 @@ RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,glob
         .style("fill",color);
 
     }
-    
+
     $("#" + radar + "freq").text(json_data.freq);
     $("#" + radar + "cp").text(json_data.cp);
     $("#" + radar + "noise").text(json_data.noise);

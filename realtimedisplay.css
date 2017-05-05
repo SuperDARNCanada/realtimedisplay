@@ -24,28 +24,36 @@ th,td {
   stroke-opacity: .5;
 }
 
-.saskatoonFOV, 
-.princegeorgeFOV, 
-.rankinFOV, 
-.clydeFOV, 
+.saskatoonFOV,
+.princegeorgeFOV,
+.rankinFOV,
+.clydeFOV,
 .inuvikFOV,
 .blackstoneFOV,
 .forthayseastFOV,
-.forthayswestFOV {
+.forthayswestFOV,
+.kapuskasingFOV,
+.goosebayFOV,
+.christmasvalleyeastFOV,
+.christmasvalleywestFOV {
   fill: none;
   stroke: black;
   stroke-width: .5px;
   stroke-opacity: .5;
 }
 
-.saskatoon, 
-.princegeorge, 
-.rankin, 
-.clyde, 
+.saskatoon,
+.princegeorge,
+.rankin,
+.clyde,
 .inuvik,
 .blackstone,
 .forthayseast,
-.forthayswest  {
+.forthayswest,
+.kapuskasing,
+.goosebay,
+.christmasvalleyeast,
+.christmasvalleywest  {
   fill: none;
   fill-opacity:1;
 }
@@ -95,6 +103,22 @@ th,td {
 
 .fhw-th-color{
   color:midnightblue;
+}
+
+.kap-th-color{
+  color:coral;
+}
+
+.gbr-th-color{
+  color:chartreuse;
+}
+
+.cve-th-color{
+  color:palegreen;
+}
+
+.cvw-th-color{
+  color:thistle;
 }
 
 .table-style{
