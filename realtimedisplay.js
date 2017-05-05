@@ -9,84 +9,84 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 var sites = {"saskatoon": {
                         "coords" : [-106.53,52.16],
                         "color" : "green",
-                        "link" : "http://superdarn.usask.ca/jsondata/sastopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/sastopojson.json",
                         "address" : 'ws://128.233.224.38:5100'
                         },
 
              "rankin": {
                         "coords" : [-93.11,62.82],
                         "color" : "blue",
-                        "link" : "http://superdarn.usask.ca/jsondata/rkntopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/rkntopojson.json",
                         "address" : 'ws://128.233.224.38:5101'
                         },
 
              "princegeorge": {
                         "coords" : [-122.59,53.98],
                         "color" : "red",
-                        "link" : "http://superdarn.usask.ca/jsondata/pgrtopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/pgrtopojson.json",
                         "address" : "ws://128.233.224.38:5102"
                         },
 
              "clyde": {
                         "coords" : [-68.50,70.49],
                         "color" : "purple",
-                        "link" : "http://superdarn.usask.ca/jsondata/clytopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/clytopojson.json",
                         "address" : "ws://128.233.224.38:5103"
                         },
 
              "inuvik": {
                         "coords" : [-133.772,68.414],
                         "color" : "orange",
-                        "link" : "http://superdarn.usask.ca/jsondata/invtopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/invtopojson.json",
                         "address" : "ws://128.233.224.38:5104"
                         },
 
              "blackstone": {
                         "coords" : [-77.950,37.100],
                         "color" : "cyan",
-                        "link" : "http://superdarn.usask.ca/jsondata/bkstopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/bkstopojson.json",
                         "address" : "ws://128.233.224.38:5105"
                         },
 
              "forthayseast": {
                         "coords" : [-99.700,38.859],
                         "color" : "brown",
-                        "link" : "http://superdarn.usask.ca/jsondata/fhetopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/fhetopojson.json",
                         "address" : "ws://128.233.224.38:5106"
                         },
 
              "forthayswest": {
                         "coords" : [-99.300,38.859],
                         "color" : "midnightblue",
-                        "link" : "http://superdarn.usask.ca/jsondata/fhwtopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/fhwtopojson.json",
                         "address" : "ws://128.233.224.38:5107"
                         },
 
              "kapuskasing": {
                         "coords" : [-82.32,49.39],
                         "color" : "coral",
-                        "link" : "http://superdarn.usask.ca/jsondata/gbrtopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/kaptopojson.json",
                         "address" : "ws://128.233.224.38:5108"
                         },
 
              "goosebay": {
                         "coords" : [-60.46,53.32],
                         "color" : "chartreuse",
-                        "link" : "http://superdarn.usask.ca/jsondata/gbrtopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/gbrtopojson.json",
                         "address" : "ws://128.233.224.38:5109"
                         },
 
              "christmasvalleyeast": {
-                        "coords" : [-120.560,43.27],
+                        "coords" : [-120.660,43.27],
                         "color" : "palegreen",
-                        "link" : "http://superdarn.usask.ca/jsondata/cvetopojson.json",
+                        "link" : "http://chapman.usask.ca/jsondata/cvetopojson.json",
                         "address" : "ws://128.233.224.38:5110"
                         },
 
              "christmasvalleywest": {
-                        "coords" : [-120.160,43.27],
-                        "color" : "thistle",
-                        "link" : "http://superdarn.usask.ca/jsondata/cvwtopojson.json",
+                        "coords" : [-120.060,43.27],
+                        "color" : "firebrick",
+                        "link" : "http://chapman.usask.ca/jsondata/cvwtopojson.json",
                         "address" : "ws://128.233.224.38:5111"
                         }
               };
@@ -127,7 +127,7 @@ function GlobeSVG() {
   this.createSVGGroup();
   this.defineResizeBehavior();
 
-  this.createMap("http://superdarn.usask.ca/jsondata/topoworld.json");
+  this.createMap("http://chapman.usask.ca/jsondata/topoworld.json");
 }
 
 GlobeSVG.prototype.createProjection = function() {

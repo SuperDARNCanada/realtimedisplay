@@ -91,6 +91,8 @@ def convert_cp_to_text(cp):
 		3450: "heatsound",
 		3500: "twofsound",
 		3501: "twofsound",
+		3504: "twofsound",
+		3505: "twofsound",
 		3520: "uafsound",
 		3521: "uafsound",
 		3550: "twofonebm",
@@ -153,7 +155,8 @@ def create_json_packet(dmap_dict):
 		json_dict['nrang'] = dmap_dict['nrang']
 		json_dict['stid'] = dmap_dict['stid']
 		json_dict['beam'] = dmap_dict['bmnum']
-		json_dict['cp'] = convert_cp_to_text(dmap_dict['cp'])
+		cp = dmap_dict['cp']
+		json_dict['cp'] = "{0}({1})".format(convert_cp_to_text(cp),cp)
 		json_dict['freq'] = dmap_dict['tfreq']
 		json_dict['power'] = pwr_css
 		json_dict['width'] = width_css
