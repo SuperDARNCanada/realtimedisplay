@@ -9,84 +9,108 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 var sites = {"saskatoon": {
                         "coords" : [-106.53,52.16],
                         "color" : "green",
-                        "link" : "http://chapman.usask.ca/jsondata/sastopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/sastopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/sastopojson_45km.json"
+                                 },
                         "address" : 'ws://128.233.224.38:5100'
                         },
 
              "rankin": {
                         "coords" : [-93.11,62.82],
                         "color" : "blue",
-                        "link" : "http://chapman.usask.ca/jsondata/rkntopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/rkntopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/rkntopojson_45km.json",
+                                 },
                         "address" : 'ws://128.233.224.38:5101'
                         },
 
              "princegeorge": {
                         "coords" : [-122.59,53.98],
                         "color" : "red",
-                        "link" : "http://chapman.usask.ca/jsondata/pgrtopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/pgrtopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/pgrtopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5102"
                         },
 
              "clyde": {
                         "coords" : [-68.50,70.49],
                         "color" : "purple",
-                        "link" : "http://chapman.usask.ca/jsondata/clytopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/clytopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/clytopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5103"
                         },
 
              "inuvik": {
                         "coords" : [-133.772,68.414],
                         "color" : "orange",
-                        "link" : "http://chapman.usask.ca/jsondata/invtopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/invtopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/invtopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5104"
                         },
 
              "blackstone": {
                         "coords" : [-77.950,37.100],
                         "color" : "cyan",
-                        "link" : "http://chapman.usask.ca/jsondata/bkstopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/bkstopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/bkstopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5105"
                         },
 
              "forthayseast": {
                         "coords" : [-99.700,38.859],
                         "color" : "brown",
-                        "link" : "http://chapman.usask.ca/jsondata/fhetopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/fhetopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/fhetopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5106"
                         },
 
              "forthayswest": {
                         "coords" : [-99.300,38.859],
                         "color" : "midnightblue",
-                        "link" : "http://chapman.usask.ca/jsondata/fhwtopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/fhwtopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/fhwtopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5107"
                         },
 
              "kapuskasing": {
                         "coords" : [-82.32,49.39],
                         "color" : "coral",
-                        "link" : "http://chapman.usask.ca/jsondata/kaptopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/kaptopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/kaptopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5108"
                         },
 
              "goosebay": {
                         "coords" : [-60.46,53.32],
                         "color" : "chartreuse",
-                        "link" : "http://chapman.usask.ca/jsondata/gbrtopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/gbrtopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/gbrtopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5109"
                         },
 
              "christmasvalleyeast": {
                         "coords" : [-120.660,43.27],
                         "color" : "palegreen",
-                        "link" : "http://chapman.usask.ca/jsondata/cvetopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/cvetopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/cvetopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5110"
                         },
 
              "christmasvalleywest": {
                         "coords" : [-120.060,43.27],
                         "color" : "firebrick",
-                        "link" : "http://chapman.usask.ca/jsondata/cvwtopojson.json",
+                        "link" : {"15km" : "http://superdarn.ca/jsondata/cvwtopojson_15km.json",
+                                  "45km" : "http://superdarn.ca/jsondata/cvwtopojson_45km.json"
+                                 },
                         "address" : "ws://128.233.224.38:5111"
                         }
               };
@@ -127,7 +151,7 @@ function GlobeSVG() {
   this.createSVGGroup();
   this.defineResizeBehavior();
 
-  this.createMap("http://chapman.usask.ca/jsondata/topoworld.json");
+  this.createMap("http://superdarn.ca/jsondata/topoworld.json");
 }
 
 GlobeSVG.prototype.createProjection = function() {
@@ -171,11 +195,6 @@ GlobeSVG.prototype.dragged = function(){
     this.projection.rotate(o1);
   }
 
-/*  this.svgGroup.selectAll(".points")
-          .remove();
-
-  this.drawPoints();*/
-
 }
 
 GlobeSVG.prototype.dragEnded = function(){}
@@ -202,62 +221,10 @@ GlobeSVG.prototype.zoomFunction = function (){
       this.svgGroup.selectAll("." + site + "FOV")
         .attr("d", this.path);
     }
-/*    this.svgGroup.selectAll(".saskatoon")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".saskatoonFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".princegeorge")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".princegeorgeFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".clyde")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".clydeFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".rankin")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".rankinFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".inuvik")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".inuvikFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".blackstone")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".blackstoneFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayseast")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayseastFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayswest")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".forthayswestFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".kapuskasing")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".kapuskasingFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".goosebay")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".goosebayFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".christmasvalleyeast")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".christmasvalleyeastFOV")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".christmasvalleywest")
-      .attr("d", this.path);
-    this.svgGroup.selectAll(".christmasvalleywestFOV")
-      .attr("d", this.path);*/
     this.svgGroup.selectAll("#sphere")
       .attr("d", this.path);
     this.svgGroup.selectAll(".points")
       .attr("d", this.path);
-
- /*   this.svgGroup.selectAll(".circles")
-    .remove()*/
-
 
 }
 
@@ -334,24 +301,28 @@ GlobeSVG.prototype.drawPoints = function() {
 
 function Topology() {
   this.topologies = {};
+  this.current_topology = {};
 
   for(var site in sites){
-    this.getTopologyData(sites[site]["link"],site);
+    for (var rsep in sites[site]["link"]){
+      this.getTopologyData(sites[site]["link"][rsep],site,rsep);
+    }
+    this.current_topology[site] = this.topologies[site]["45km"];
   }
 
+
 }
 
-Topology.prototype.setTopology = function(location,data){
-  this.topologies[location] = data;
+Topology.prototype.setTopology = function(site,rsep,data){
+  this.topologies[site][rsep] = this.topologies[location][rsep] || {};
+  this.topologies[site][rsep] = data;
 }
 
-Topology.prototype.getTopologyData = function(link,location){
+Topology.prototype.getTopologyData = function(link,site,rsep){
 
-  d3.json(link, function(error, json_data) {
+  d3.json(link, function(error,json_data) {
     if (error) throw error;
-
-    this.setTopology(location,json_data);
-
+    this.setTopology(site,rsep,json_data);
   }.bind(this));
 }
 
@@ -739,17 +710,17 @@ Interactivity.prototype.displayColorLegend = function(gradientObj){
 
 Interactivity.prototype.displayRadar = function(name){
   this.globeSVG.svgGroup.append("path")
-      .datum(topojson.feature(this.topologyObj.topologies[name], this.topologyObj.topologies[name].objects.geojsondata))
+      .datum(topojson.feature(this.topologyObj.current_topology[name], this.topologyObj.current_topology[name].objects.geojsondata))
       .attr("class", name)
       .attr("d", this.globeSVG.path);
   this.globeSVG.svgGroup.selectAll("." + name)
-      .data(topojson.feature(this.topologyObj.topologies[name], this.topologyObj.topologies[name].objects.geojsondata).features)
+      .data(topojson.feature(this.topologyObj.current_topology[name], this.topologyObj.current_topology[name].objects.geojsondata).features)
     .enter().append("path")
       .attr("class",name)
       .attr("id",function(d){return name + d.id;})
       .attr("d",this.globeSVG.path);
  this.globeSVG. svgGroup.append("path")
-      .datum(topojson.mesh(this.topologyObj.topologies[name], this.topologyObj.topologies[name].objects.geojsondata, function(a, b) { return a !== b; }))
+      .datum(topojson.mesh(this.topologyObj.current_topology[name], this.topologyObj.current_topology[name].objects.geojsondata, function(a, b) { return a !== b; }))
       .attr("class", name + "FOV")
       .attr("d", this.globeSVG.path);
 
@@ -767,7 +738,7 @@ Interactivity.prototype.defineRadarButtonAction = function(name){
     var self = this;
 
     $(jQuerySelector).change(function() {
-      var topology = self.topologyObj.topologies[name];
+      var topology = self.topologyObj.current_topology[name];
       if($(this).is(":checked")) {
         self.displayRadar(name,topology);
       }
@@ -787,7 +758,7 @@ function zeroPad(num, places) {
   return Array(+(zero > 0 && zero)).join("0") + num;
 }
 
-function RadarConnections(interactivityObj,globeSVG){
+function RadarConnections(interactivityObj,globeSVG, topologyObj){
   this.radarConnections = {};
   var self = this;
 
@@ -796,7 +767,7 @@ function RadarConnections(interactivityObj,globeSVG){
   /*IFFE to correctly rectify scope of the loop variable in a closure*/
   for(var site in sites){
     (function(i){
-      onMessageFunctions[i] = function(evt){self.on_message(evt,i,interactivityObj,globeSVG);};
+      onMessageFunctions[i] = function(evt){self.on_message(evt,i,interactivityObj,globeSVG,topologyObj);};
     })(site);
   }
 
@@ -812,7 +783,7 @@ RadarConnections.prototype.createWebsocket = function(name,websocketAddress){
   this.radarConnections[name] = new WebSocket(websocketAddress,['binary', 'base64']);
 }
 
-RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,globeSVG){
+RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,globeSVG,topologyObj){
   var reader = new FileReader();
   reader.onload = function(){
     var received_data = reader.result;
@@ -850,6 +821,11 @@ RadarConnections.prototype.on_message = function(evt,radar,interactivityObj,glob
     $("#" + radar + "frang").text(json_data.frang);
     $("#" + radar + "time").text(json_data.time);
 
+
+    if( topologyObj.current_topology[radar] != topologyObj.topologies[radar][json_data.rsep + "km"]){
+      topologyObj.current_topology[radar] = topologyObj.topologies[radar][json_data.rsep + "km"];
+    }
+
   };
   reader.readAsText(evt.data)
 }
@@ -868,7 +844,7 @@ var radarConnections;
 
 $(document).ready(function() {
   interactivity = new Interactivity(colorGrad,globeSVG,topology);
-  radarConnections = new RadarConnections(interactivity,globeSVG);
+  radarConnections = new RadarConnections(interactivity,globeSVG,topology);
 });
 
 
