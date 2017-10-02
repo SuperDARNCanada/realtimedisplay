@@ -45,6 +45,6 @@ done
 
 for rad in "${radars[@]}"
 do
-	topojson -s -o ${rad}topojson15km.json -- topojson=${rad}geojson_15km.json 
-	topojson -s -o ${rad}topojson45km.json -- topojson=${rad}geojson_45km.json 
+	topojson -s -o ${rad}topojson15km.json -- topojsondata=${rad}geojson_15km.json 
+	topojson -s -o ${rad}topojson45km.json -- topojsondata=${rad}geojson_45km.json 
 done
