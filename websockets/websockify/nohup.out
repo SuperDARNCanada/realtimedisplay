@@ -1,0 +1,374 @@
+WebSocket server settings:
+WebSocket server settings:
+WebSocket server settings:
+  - Listen on :5106
+  - Listen on :5105
+  - Listen on :5107
+  - Flash security policy server
+  - Flash security policy server
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - No SSL/TLS support (no cert file)
+  - No SSL/TLS support (no cert file)
+  - proxying from :5105 to 128.233.224.38:5005
+  - proxying from :5107 to 128.233.224.38:5007
+  - proxying from :5106 to 128.233.224.38:5006
+WebSocket server settings:
+WebSocket server settings:
+  - Listen on :5100
+  - Listen on :5101
+  - Flash security policy server
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - No SSL/TLS support (no cert file)
+  - proxying from :5101 to 128.233.224.38:5001
+  - proxying from :5100 to 128.233.224.38:5000
+WebSocket server settings:
+  - Listen on :5103
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5103 to 128.233.224.38:5003
+WebSocket server settings:
+  - Listen on :5102
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5102 to 128.233.224.38:5002
+WebSocket server settings:
+  - Listen on :5104
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5104 to 128.233.224.38:5004
+Got SIGTERM, exiting
+Got SIGTERM, exiting
+In exit
+Got SIGTERM, exiting
+Got SIGTERM, exiting
+In exit
+In exit
+In exit
+Got SIGTERM, exiting
+Got SIGTERM, exiting
+Got SIGTERM, exiting
+Got SIGTERM, exiting
+In exit
+In exit
+In exit
+In exit
+WebSocket server settings:
+WebSocket server settings:
+WebSocket server settings:
+  - Listen on :5104
+  - Listen on :5107
+  - Listen on :5102
+  - Flash security policy server
+  - Flash security policy server
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - No SSL/TLS support (no cert file)
+  - No SSL/TLS support (no cert file)
+  - proxying from :5104 to 128.233.224.38:5004
+  - proxying from :5102 to 128.233.224.38:5002
+  - proxying from :5107 to 128.233.224.38:5007
+WebSocket server settings:
+WebSocket server settings:
+WebSocket server settings:
+  - Listen on :5105
+  - Listen on :5103
+  - Listen on :5100
+  - Flash security policy server
+  - Flash security policy server
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - No SSL/TLS support (no cert file)
+  - No SSL/TLS support (no cert file)
+WebSocket server settings:
+  - Listen on :5101
+  - Flash security policy server
+WebSocket server settings:
+  - proxying from :5100 to 128.233.224.38:5000
+  - proxying from :5103 to 128.233.224.38:5003
+  - proxying from :5105 to 128.233.224.38:5005
+  - Listen on :5106
+  - No SSL/TLS support (no cert file)
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5101 to 128.233.224.38:5001
+  - proxying from :5106 to 128.233.224.38:5006
+Got SIGTERM, exiting
+Got SIGTERM, exiting
+In exit
+Got SIGTERM, exiting
+In exit
+Got SIGTERM, exiting
+In exit
+Got SIGTERM, exiting
+In exit
+Got SIGTERM, exiting
+Got SIGTERM, exiting
+In exit
+In exit
+Got SIGTERM, exiting
+In exit
+In exit
+WebSocket server settings:
+  - Listen on :5100
+  - Flash security policy server
+  - SSL/TLS support
+  - proxying from :5100 to 128.233.224.38:5000
+Got SIGINT, exiting
+In exit
+WebSocket server settings:
+  - Listen on :5101
+  - Flash security policy server
+  - SSL/TLS support
+  - proxying from :5101 to 128.233.224.38:5001
+Got SIGINT, exiting
+In exit
+WebSocket server settings:
+  - Listen on :5102
+  - Flash security policy server
+  - SSL/TLS support
+  - proxying from :5102 to 128.233.224.38:5002
+Got SIGINT, exiting
+In exit
+WebSocket server settings:
+  - Listen on :5103
+  - Flash security policy server
+  - SSL/TLS support
+  - proxying from :5103 to 128.233.224.38:5003
+Got SIGINT, exiting
+In exit
+WebSocket server settings:
+  - Listen on :5104
+  - Flash security policy server
+  - SSL/TLS support
+  - proxying from :5104 to 128.233.224.38:5004
+Got SIGINT, exiting
+In exit
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 2, in <module>
+    from websockify.websocketproxy import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocketproxy.py", line 14, in <module>
+    import signal, socket, optparse, time, os, sys, subprocess, logging, errno
+  File "/usr/lib64/python2.7/optparse.py", line 90, in <module>
+    from gettext import gettext
+  File "/usr/lib64/python2.7/gettext.py", line 83, in <module>
+    """, re.VERBOSE|re.DOTALL)
+  File "/usr/lib64/python2.7/re.py", line 194, in compile
+    return _compile(pattern, flags)
+  File "/usr/lib64/python2.7/re.py", line 249, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "/usr/lib64/python2.7/sre_compile.py", line 576, in compile
+    code = _code(p, flags)
+  File "/usr/lib64/python2.7/sre_compile.py", line 561, in _code
+    _compile(code, p.data, flags)
+  File "/usr/lib64/python2.7/sre_compile.py", line 192, in _compile
+    _compile(code, av, flags)
+  File "/usr/lib64/python2.7/sre_compile.py", line 78, in _compile
+    for op, av in pattern:
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 58, in <module>
+    globals()[mod] = __import__(mod)
+  File "/usr/lib64/python2.7/site-packages/numpy/__init__.py", line 169, in <module>
+    from . import polynomial
+  File "/usr/lib64/python2.7/site-packages/numpy/polynomial/__init__.py", line 20, in <module>
+    from .polynomial import Polynomial
+  File "/usr/lib64/python2.7/site-packages/numpy/polynomial/polynomial.py", line 1493, in <module>
+    exec(polytemplate.substitute(name='Polynomial', nick='poly', domain='[-1,1]'))
+  File "<string>", line 2, in <module>
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 58, in <module>
+    globals()[mod] = __import__(mod)
+  File "/usr/lib64/python2.7/site-packages/numpy/__init__.py", line 169, in <module>
+    from . import polynomial
+  File "/usr/lib64/python2.7/site-packages/numpy/polynomial/__init__.py", line 25, in <module>
+    from .laguerre import Laguerre
+  File "/usr/lib64/python2.7/site-packages/numpy/polynomial/laguerre.py", line 1742, in <module>
+    exec(polytemplate.substitute(name='Laguerre', nick='lag', domain='[-1,1]'))
+  File "<string>", line 2, in <module>
+KeyboardInterrupt
+WebSocket server settings:
+  - Listen on :5108
+  - Flash security policy server
+  - SSL/TLS support
+  - proxying from :5108 to 128.233.224.38:5008
+Got SIGINT, exiting
+In exit
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site.py", line 555, in <module>
+    main()
+  File "/usr/lib64/python2.7/site.py", line 538, in main
+    known_paths = addsitepackages(known_paths)
+  File "/usr/lib64/python2.7/site.py", line 320, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib64/python2.7/site.py", line 190, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib64/python2.7/site.py", line 152, in addpackage
+    exec line
+  File "<string>", line 1, in <module>
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site.py", line 555, in <module>
+    main()
+  File "/usr/lib64/python2.7/site.py", line 538, in main
+    known_paths = addsitepackages(known_paths)
+  File "/usr/lib64/python2.7/site.py", line 320, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib64/python2.7/site.py", line 184, in addsitedir
+    names = os.listdir(sitedir)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 19, in <module>
+    import os, sys, time, errno, signal, socket, select, logging
+KeyboardInterrupt
+WebSocket server settings:
+  - Listen on :5100
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5100 to 128.233.224.38:5000
+Got SIGINT, exiting
+In exit
+Closing socket listening at :5100
+WebSocket server settings:
+  - Listen on :5101
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5101 to 128.233.224.38:5001
+Got SIGINT, exiting
+In exit
+Closing socket listening at :5101
+WebSocket server settings:
+  - Listen on :5102
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5102 to 128.233.224.38:5002
+Got SIGINT, exiting
+In exit
+Closing socket listening at :5102
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 58, in <module>
+    globals()[mod] = __import__(mod)
+  File "/usr/lib64/python2.7/multiprocessing/__init__.py", line 84, in <module>
+    import _multiprocessing
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 58, in <module>
+    globals()[mod] = __import__(mod)
+  File "/usr/lib64/python2.7/site-packages/numpy/__init__.py", line 171, in <module>
+    from . import ctypeslib
+  File "/usr/lib64/python2.7/site-packages/numpy/ctypeslib.py", line 62, in <module>
+    import ctypes
+  File "/usr/lib64/python2.7/ctypes/__init__.py", line 1, in <module>
+    """create and manipulate C data types in Python"""
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 58, in <module>
+    globals()[mod] = __import__(mod)
+  File "/usr/lib64/python2.7/site-packages/numpy/__init__.py", line 169, in <module>
+    from . import polynomial
+  File "/usr/lib64/python2.7/site-packages/numpy/polynomial/__init__.py", line 24, in <module>
+    from .hermite_e import HermiteE
+  File "/usr/lib64/python2.7/site-packages/numpy/polynomial/hermite_e.py", line 1746, in <module>
+    exec(polytemplate.substitute(name='HermiteE', nick='herme', domain='[-1,1]'))
+  File "<string>", line 2, in <module>
+KeyboardInterrupt
+WebSocket server settings:
+  - Listen on :5106
+  - Flash security policy server
+  - No SSL/TLS support (no cert file)
+  - proxying from :5106 to 128.233.224.38:5006
+Got SIGINT, exiting
+In exit
+Closing socket listening at :5106
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site.py", line 555, in <module>
+    main()
+  File "/usr/lib64/python2.7/site.py", line 537, in main
+    known_paths = addusersitepackages(known_paths)
+  File "/usr/lib64/python2.7/site.py", line 276, in addusersitepackages
+    user_site = getusersitepackages(kind)
+  File "/usr/lib64/python2.7/site.py", line 244, in getusersitepackages
+    user_base = getuserbase() # this will also set USER_BASE
+  File "/usr/lib64/python2.7/site.py", line 231, in getuserbase
+    USER_BASE = get_config_var('userbase')
+  File "/usr/lib64/python2.7/sysconfig.py", line 520, in get_config_var
+    return get_config_vars().get(name)
+  File "/usr/lib64/python2.7/sysconfig.py", line 453, in get_config_vars
+    import re
+  File "/usr/lib64/python2.7/re.py", line 206, in <module>
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site.py", line 555, in <module>
+    main()
+  File "/usr/lib64/python2.7/site.py", line 537, in main
+    known_paths = addusersitepackages(known_paths)
+  File "/usr/lib64/python2.7/site.py", line 276, in addusersitepackages
+    user_site = getusersitepackages(kind)
+  File "/usr/lib64/python2.7/site.py", line 244, in getusersitepackages
+    user_base = getuserbase() # this will also set USER_BASE
+  File "/usr/lib64/python2.7/site.py", line 231, in getuserbase
+    USER_BASE = get_config_var('userbase')
+  File "/usr/lib64/python2.7/sysconfig.py", line 520, in get_config_var
+    return get_config_vars().get(name)
+  File "/usr/lib64/python2.7/sysconfig.py", line 472, in get_config_vars
+    _init_posix(_CONFIG_VARS)
+  File "/usr/lib64/python2.7/sysconfig.py", line 357, in _init_posix
+    vars.update(build_time_vars)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 19, in <module>
+    import os, sys, time, errno, signal, socket, select, logging
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "./websockify.py", line 3, in <module>
+    import websockify
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/__init__.py", line 1, in <module>
+    from websockify.websocket import *
+  File "/home/superdarn/realtimedisplay/websockets/websockify/websockify/websocket.py", line 19, in <module>
+    import os, sys, time, errno, signal, socket, select, logging
+  File "/usr/lib64/python2.7/logging/__init__.py", line 891, in <module>
+    class FileHandler(StreamHandler):
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site.py", line 62, in <module>
+    import os
+  File "/usr/lib64/python2.7/os.py", line 49, in <module>
+    import posixpath as path
+  File "/usr/lib64/python2.7/posixpath.py", line 17, in <module>
+    import warnings
+  File "/usr/lib64/python2.7/warnings.py", line 1, in <module>
+    """Python part of the warnings subsystem."""
+KeyboardInterrupt

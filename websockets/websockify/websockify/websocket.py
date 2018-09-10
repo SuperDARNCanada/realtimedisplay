@@ -607,6 +607,7 @@ class WebSocketServer(object):
             tcp_keepalive=True, tcp_keepcnt=None, tcp_keepidle=None,
             tcp_keepintvl=None, auto_pong=False, strict_mode=True):
 
+	print(listen_host)
         # settings
         self.RequestHandlerClass = RequestHandlerClass
         self.verbose        = verbose
@@ -708,6 +709,8 @@ class WebSocketServer(object):
             flags = flags | socket.AI_PASSIVE
 
         if not unix_socket:
+	    print(port)
+	    print(host)
             addrs = socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM,
                     socket.IPPROTO_TCP, flags)
             if not addrs:
@@ -730,7 +733,8 @@ class WebSocketServer(object):
                                     tcp_keepintvl)
 
             if connect:
-                sock.connect(addrs[0][4])
+                print(addrs)
+		sock.connect(addrs[0][4])
                 if use_ssl:
                     sock = ssl.wrap_socket(sock)
             else:

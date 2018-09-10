@@ -9,109 +9,109 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 var sites = {"saskatoon": {
                         "coords" : [-106.53,52.16],
                         "color" : "green",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/sastopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/sastopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/sastopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/sastopojson45km.json"
                                  },
-                        "address" : 'ws://128.233.224.38:5100'
+                        "address" : 'wss://chapman.usask.ca:5100'
                         },
 
              "rankin": {
                         "coords" : [-93.11,62.82],
                         "color" : "blue",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/rkntopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/rkntopojson45km.json",
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/rkntopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/rkntopojson45km.json",
                                  },
-                        "address" : 'ws://128.233.224.38:5101'
+                        "address" : 'wss://chapman.usask.ca:5101'
                         },
 
              "princegeorge": {
                         "coords" : [-122.59,53.98],
                         "color" : "red",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/pgrtopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/pgrtopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/pgrtopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/pgrtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5102"
+                        "address" : "wss://chapman.usask.ca:5102"
                         },
 
              "clyde": {
                         "coords" : [-68.50,70.49],
                         "color" : "purple",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/clytopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/clytopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/clytopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/clytopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5103"
+                        "address" : "wss://chapman.usask.ca:5103"
                         },
 
              "inuvik": {
                         "coords" : [-133.772,68.414],
                         "color" : "orange",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/invtopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/invtopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/invtopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/invtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5104"
+                        "address" : "wss://chapman.usask.ca:5104"
                         },
 
              "blackstone": {
                         "coords" : [-77.950,37.100],
                         "color" : "cyan",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/bkstopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/bkstopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/bkstopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/bkstopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5105"
+                        "address" : "wss://chapman.usask.ca:5105"
                         },
 
              "forthayseast": {
                         "coords" : [-99.700,38.859],
                         "color" : "brown",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/fhetopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/fhetopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/fhetopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/fhetopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5106"
+                        "address" : "wss://chapman.usask.ca:5106"
                         },
 
              "forthayswest": {
                         "coords" : [-99.300,38.859],
                         "color" : "midnightblue",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/fhwtopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/fhwtopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/fhwtopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/fhwtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5107"
+                        "address" : "wss://chapman.usask.ca:5107"
                         },
 
              "kapuskasing": {
                         "coords" : [-82.32,49.39],
                         "color" : "coral",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/kaptopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/kaptopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/kaptopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/kaptopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5108"
+                        "address" : "wss://chapman.usask.ca:5108"
                         },
 
              "goosebay": {
                         "coords" : [-60.46,53.32],
                         "color" : "chartreuse",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/gbrtopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/gbrtopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/gbrtopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/gbrtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5109"
+                        "address" : "wss://chapman.usask.ca:5109"
                         },
 
              "christmasvalleyeast": {
                         "coords" : [-120.660,43.27],
                         "color" : "palegreen",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/cvetopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/cvetopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/cvetopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/cvetopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5110"
+                        "address" : "wss://chapman.usask.ca:5110"
                         },
 
              "christmasvalleywest": {
                         "coords" : [-120.060,43.27],
                         "color" : "firebrick",
-                        "link" : {"15km" : "http://chapman.usask.ca/jsondata/cvwtopojson15km.json",
-                                  "45km" : "http://chapman.usask.ca/jsondata/cvwtopojson45km.json"
+                        "link" : {"15km" : "htpps://chapman.usask.ca/jsondata/cvwtopojson15km.json",
+                                  "45km" : "htpps://chapman.usask.ca/jsondata/cvwtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5111"
+                        "address" : "wss://chapman.usask.ca:5111"
                         }
               };
 
@@ -151,7 +151,7 @@ function GlobeSVG() {
   this.createSVGGroup();
   this.defineResizeBehavior();
 
-  this.createMap("http://chapman.usask.ca/jsondata/topoworld.json");
+  this.createMap("htpps://chapman.usask.ca/jsondata/topoworld.json");
 }
 
 GlobeSVG.prototype.createProjection = function() {
@@ -335,7 +335,7 @@ Topology.prototype.getTopologyData = function(link,site,rsep){
 
 function RotationMath(){
 /***** MAP ROTATION CODE TAKEN FROM
-http://bl.ocks.org/ivycodes/7c94cb5a3accd9913263
+htpps://bl.ocks.org/ivycodes/7c94cb5a3accd9913263
 ***/
 }
 
@@ -419,7 +419,7 @@ RotationMath.euler2quat = function(e) {
 
 // This functions computes a quaternion multiply
 // Geometrically, it means combining two quant rotations
-// http://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/arithmetic/index.htm
+// htpps://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/arithmetic/index.htm
 RotationMath.quatMultiply = function(q1, q2) {
   if(!q1 || !q2) return;
 
@@ -736,10 +736,9 @@ Interactivity.prototype.removeRadar = function(name){
     .remove();
 }
 
-Interactivity.prototype.defineRadarButtonAction = function(name){
+Interactivity.prototype.defineRadarButtonAction = function(name, checked = false){
     var jQuerySelector = "input[type=checkbox][name={0}]".format(name);
     var self = this;
-
     $(jQuerySelector).change(function() {
       var topology = self.topologyObj.current_topology[name];
       if($(this).is(":checked")) {

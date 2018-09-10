@@ -454,7 +454,9 @@ def websockify_init():
     if args[0].count(':') > 0:
         opts.listen_host, opts.listen_port = args[0].rsplit(':', 1)
         opts.listen_host = opts.listen_host.strip('[]')
+	print(args[0])
     else:
+	print(args[0])
         opts.listen_host, opts.listen_port = '', args[0]
 
     try:    opts.listen_port = int(opts.listen_port)
