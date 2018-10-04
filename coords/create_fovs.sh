@@ -1,6 +1,6 @@
 #!/bin/bash
 
-radars=( bks cve cvw cly fhe fhw gbr inv kap pgr rkn sas )
+radars=( bks cve cvw cly fhe fhw gbr inv kap pgr rkn sas mcm kod hok)
 
 bks_beams=24
 bks_gates=110
@@ -37,6 +37,15 @@ rkn_gates=100
 
 sas_beams=16
 sas_gates=75
+
+mcm_beams=16
+mcm_gates=75
+
+kod_beams=16
+kod_gates=75
+
+hok_beams=16
+hok_gates=110
 
 for rad in "${radars[@]}"
 do
