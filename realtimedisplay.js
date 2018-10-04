@@ -21,7 +21,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/rkntopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/rkntopojson45km.json",
                                  },
-                        "address" : 'ws://128.233.224.38:5101'
+                        "address" : 'wss://chapman.usask.ca:5102'
                         },
 
              "princegeorge": {
@@ -30,7 +30,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/pgrtopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/pgrtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5102"
+                        "address" : "wss://chapman.usask.ca:5103"
                         },
 
              "clyde": {
@@ -39,7 +39,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/clytopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/clytopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5103"
+                        "address" : "wss://chapman.usask.ca:5104"
                         },
 
              "inuvik": {
@@ -48,7 +48,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/invtopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/invtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5104"
+                        "address" : "wss://chapman.usask.ca:5105"
                         },
 
              "blackstone": {
@@ -57,7 +57,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/bkstopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/bkstopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5105"
+                        "address" : "wss://chapman.usask.ca:5106"
                         },
 
              "forthayseast": {
@@ -66,7 +66,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/fhetopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/fhetopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5106"
+                        "address" : "wss://chapman.usask.ca:5107"
                         },
 
              "forthayswest": {
@@ -75,7 +75,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/fhwtopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/fhwtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5107"
+                        "address" : "wss://chapman.usask.ca:5108"
                         },
 
              "kapuskasing": {
@@ -84,7 +84,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/kaptopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/kaptopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5108"
+                        "address" : "wss://chapman.usask.ca:5109"
                         },
 
              "goosebay": {
@@ -93,7 +93,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/gbrtopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/gbrtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5109"
+                        "address" : "wss://chapman.usask.ca:5110"
                         },
 
              "christmasvalleyeast": {
@@ -102,7 +102,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/cvetopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/cvetopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5110"
+                        "address" : "wss://chapman.usask.ca:5111"
                         },
 
              "christmasvalleywest": {
@@ -111,7 +111,7 @@ var sites = {"saskatoon": {
                         "link" : {"15km" : "http://chapman.usask.ca/jsondata/cvwtopojson15km.json",
                                   "45km" : "http://chapman.usask.ca/jsondata/cvwtopojson45km.json"
                                  },
-                        "address" : "ws://128.233.224.38:5111"
+                        "address" : "wss://chapman.usask.ca:5112"
                         }
               };
 

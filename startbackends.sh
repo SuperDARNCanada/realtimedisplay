@@ -43,7 +43,7 @@ done
 
 radar_name=inv
 radar_codes+=($radar_name)
-radar[addr]=imain.usask.ca
+radar[addr]=199.247.206.20
 radar[in_port]=1024
 radar[out_port]=5004
 for key in "${!radar[@]}"; do
@@ -91,6 +91,51 @@ radar_codes+=($radar_name)
 radar[addr]=sd-software.ece.vt.edu
 radar[in_port]=1049
 radar[out_port]=5009
+for key in "${!radar[@]}"; do
+  radars[$radar_name,$key]=${radar[$key]}
+done
+
+radar_name=cve
+radar_codes+=($radar_name)
+radar[addr]=sdnet.thayer.dartmouth.edu
+radar[in_port]=1051
+radar[out_port]=5010
+for key in "${!radar[@]}"; do
+  radars[$radar_name,$key]=${radar[$key]}
+done
+
+radar_name=cvw
+radar_codes+=($radar_name)
+radar[addr]=sdnet.thayer.darthmouth.edu
+radar[in_port]=1052
+radar[out_port]=5011
+for key in "${!radar[@]}"; do
+  radars[$radar_name,$key]=${radar[$key]}
+done
+
+radar_name=mcm
+radar_codes+=($radar_name)
+radar[addr]=superdarn.gi.alaska.edu
+radar[in_port]=6024
+radar[out_port]=5012
+for key in "${!radar[@]}"; do
+  radars[$radar_name,$key]=${radar[$key]}
+done
+
+radar_name=kod
+radar_codes+=($radar_name)
+radar[addr]=superdarn.gi.alaska.edu
+radar[in_port]=6023
+radar[out_port]=5013
+for key in "${!radar[@]}"; do
+  radars[$radar_name,$key]=${radar[$key]}
+done
+
+radar_name=hok
+radar_codes+=($radar_name)
+radar[addr]=133.47.144.15
+radar[in_port]=10021
+radar[out_port]=5014
 for key in "${!radar[@]}"; do
   radars[$radar_name,$key]=${radar[$key]}
 done
