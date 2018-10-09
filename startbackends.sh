@@ -5,7 +5,7 @@ declare -A radars
 declare -A radar
 radar_codes=()
 
-radar_name="sas"
+radar_name=sas
 radar_codes+=($radar_name)
 radar[addr]=tmain.usask.ca
 radar[in_port]=1024
@@ -14,10 +14,10 @@ for key in "${!radar[@]}"; do
   radars[$radar_name,$key]=${radar[$key]}
 done
 
-radar_name="rkn"
+radar_name=rkn
 radar_codes+=($radar_name)
-radar[addr]=rmain.usask.ca
-radar[in_port]=1024
+radar[addr]=64.247.154.190
+radar[in_port]=50724
 radar[out_port]=5001
 for key in "${!radar[@]}"; do
   radars[$radar_name,$key]=${radar[$key]}
@@ -26,7 +26,7 @@ done
 radar_name=pgr
 radar_codes+=($radar_name)
 radar[addr]=localhost
-radar[in_port]=33643
+radar[in_port]=33647
 radar[out_port]=5002
 for key in "${!radar[@]}"; do
   radars[$radar_name,$key]=${radar[$key]}
@@ -34,8 +34,8 @@ done
 
 radar_name=cly
 radar_codes+=($radar_name)
-radar[addr]=cmain.usask.ca
-radar[in_port]=1024
+radar[addr]=64.247.154.157
+radar[in_port]=50724
 radar[out_port]=5003
 for key in "${!radar[@]}"; do
   radars[$radar_name,$key]=${radar[$key]}
@@ -106,7 +106,7 @@ done
 
 radar_name=cvw
 radar_codes+=($radar_name)
-radar[addr]=sdnet.thayer.darthmouth.edu
+radar[addr]=sdnet.thayer.dartmouth.edu
 radar[in_port]=1052
 radar[out_port]=5011
 for key in "${!radar[@]}"; do

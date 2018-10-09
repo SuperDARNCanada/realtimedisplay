@@ -35,7 +35,10 @@ th,td {
 .kapuskasingFOV,
 .goosebayFOV,
 .christmasvalleyeastFOV,
-.christmasvalleywestFOV {
+.christmasvalleywestFOV,
+.mcmurdoFOV,
+.kodiakFOV,
+.hokkaidoeastFOV{
   fill: none;
   stroke: black;
   stroke-width: .5px;
@@ -53,7 +56,10 @@ th,td {
 .kapuskasing,
 .goosebay,
 .christmasvalleyeast,
-.christmasvalleywest  {
+.christmasvalleywest,
+.mcmurdo,
+.kodiak,
+.hokkaidoeast{
   fill: none;
   fill-opacity:1;
 }
@@ -119,6 +125,18 @@ th,td {
 
 .cvw-th-color{
   color:firebrick;
+}
+
+.mcm-th-color{
+    color:aquamarine;
+}
+
+.kod-th-color{
+    color:darkslategrey;
+}
+
+.hok-th-color{
+    color:peachpuff;
 }
 
 .table-style{

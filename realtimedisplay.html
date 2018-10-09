@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="realtimedisplay.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
-	<script src='http://code.jquery.com/jquery-2.0.3.js'></script>
+	<script src='https://code.jquery.com/jquery-2.0.3.js'></script>
 </head>
 
 <body>
@@ -27,7 +27,28 @@
 		  		  <th class="text-align gbr-th-color">Goose Bay</th>
 		  		  <th class="text-align cve-th-color">Christmas Valley East</th>
 		  		  <th class="text-align cvw-th-color">Christmas Valley West</th>
+		  		  <th class="text-align mcm-th-color">McMurdo</th>
+		  		  <th class="text-align kod-th-color">Kodiak</th>
+		  		  <th class="text-align hok-th-color">Hokkaido East</th>
 		  		</tr>
+                <tr>
+                  <td>Organization</td>  
+                  <td>Univ. of Saskatchewan</td>  
+                  <td>Univ. of Saskatchewan</td>  
+                  <td>Univ. of Saskatchewan</td>  
+                  <td>Univ. of Saskatchewan</td>  
+                  <td>Univ. of Saskatchewan</td>  
+                  <td>Virginia Tech</td>  
+                  <td>Virginia Tech</td>  
+                  <td>Virginia Tech</td>  
+                  <td>Virginia Tech</td>  
+                  <td>Virginia Tech</td>  
+                  <td>Darthmouth College</td>  
+                  <td>Darthmouth College</td>  
+                  <td>Univ. of Alaska, Fairbanks</td>  
+                  <td>Univ. of Alaska, Fairbanks</td>  
+                  <td>Nagoya Univ.</td>  
+                </tr>
 		  		<tr>
 		  		  <td>Radar Mode</td>
 		  		  <td id="saskatooncp"></td>
@@ -42,6 +63,9 @@
 		  		  <td id="goosebaycp"></td>
 		  		  <td id="christmasvalleyeastcp"></td>
 		  		  <td id="christmasvalleywestcp"></td>
+		  		  <td id="mcmurdocp"></td>
+		  		  <td id="kodiakcp"></td>
+		  		  <td id="hokkaidoeastcp"></td>
 		  		</tr>
 		  		<tr>
 		  		  <td>Frequency(kHz)</td>
@@ -57,6 +81,9 @@
 		  		  <td id="goosebayfreq"></td>
 		  		  <td id="christmasvalleyeastfreq"></td>
 		  		  <td id="christmasvalleywestfreq"></td>
+		  		  <td id="mcmurdofreq"></td>
+		  		  <td id="kodiakfreq"></td>
+		  		  <td id="hokkaidoeastfreq"></td>
 		  		</tr>
 		  		<tr>
 		  		  <td>Noise</td>
@@ -72,6 +99,9 @@
 		  		  <td id="goosebaynoise"></td>
 		  		  <td id="christmasvalleyeastnoise"></td>
 		  		  <td id="christmasvalleywestnoise"></td>
+		  		  <td id="mcmurdonoise"></td>
+		  		  <td id="kodiaknoise"></td>
+		  		  <td id="hokkaidoeastnoise"></td>
 		  		</tr>
 		  		<tr>
 		  		  <td>Averages</td>
@@ -87,6 +117,9 @@
 		  		  <td id="goosebayave"></td>
 		  		  <td id="christmasvalleyeastave"></td>
 		  		  <td id="christmasvalleywestave"></td>
+		  		  <td id="mcmurdoave"></td>
+		  		  <td id="kodiakave"></td>
+		  		  <td id="hokkaidoeastave"></td>
 		  		</tr>
 		  		<tr>
 		  		  <td>Rsep</td>
@@ -102,6 +135,9 @@
 		  		  <td id="goosebayrsep"></td>
 		  		  <td id="christmasvalleyeastrsep"></td>
 		  		  <td id="christmasvalleywestrsep"></td>
+		  		  <td id="mcmurdorsep"></td>
+		  		  <td id="kodiakrsep"></td>
+		  		  <td id="hokkaidoeastrsep"></td>
 		  		</tr>
 		  		<tr>
 		  		  <td>1st Range(km)</td>
@@ -116,7 +152,10 @@
 		  		  <td id="kapuskasingfrang"></td>
 		  		  <td id="goosebayfrang"></td>
 		  		  <td id="christmasvalleyeastfrang"></td>
-		  		  <td id="christmasvalleywestfrang"></td
+                  <td id="christmasvalleywestfrang"></td>
+                  <td id="mcmurdofrang"></td>
+                  <td id="kodiakfrang"></td>
+                  <td id="hokkaidoeastfrang"></td>
 		  		</tr>
 		  		<tr>
 		  		  <td>Time(UTC)</td>
@@ -132,6 +171,9 @@
 		  		  <td id="goosebaytime"></td>
 		  		  <td id="christmasvalleyeasttime"></td>
 		  		  <td id="christmasvalleywesttime"></td>
+		  		  <td id="mcmurdotime"></td>
+		  		  <td id="kodiaktime"></td>
+		  		  <td id="hokkaidoeasttime"></td>
 		  		</tr>
 		  		<tr>
 		  		  <td>Show/Hide</td>
@@ -147,6 +189,9 @@
 		  		  <td><input type="checkbox" name="goosebay" value="Goose Bay"></td>
 		  		  <td><input type="checkbox" name="christmasvalleyeast" value="Christmas Valley East"></td>
 		  		  <td><input type="checkbox" name="christmasvalleywest" value="Christmas Valley West"></td>
+		  		  <td><input type="checkbox" name="mcmurdo" value="McMurdo"></td>
+		  		  <td><input type="checkbox" name="kodiak" value="Kodiak"></td>
+		  		  <td><input type="checkbox" name="hokkaidoeast" value="Hokkaido East"></td>
 		  		</tr>
 			</table>
 	</div>
