@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Author: Bo Ericsson -->
+  <title>Real Time Chart</title>
+  <link rel=stylesheet type=text/css href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" media="all">
+  <style>
+  .axis text {
+    font: 10px sans-serif;
+  }
+  .chartTitle {
+    font-size: 12px;
+    font-weight: bold;
+    text-anchor: middle; 
+  }
+  .axis .title {
+    font-weight: bold;
+    text-anchor: middle;
+  }
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .x.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .nav .area {
+    fill: lightgrey;
+    stroke-width: 0px;
+  }
+  .nav .line {
+    fill: none;
+    stroke: darkgrey;
+    stroke-width: 1px;
+  }
+  .viewport {
+    stroke: grey;
+    fill: black;
+    fill-opacity: 0.3;
+  }
+  .viewport .extent {
+    fill: green;
+  }
+  .well {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  </style>
+<body>
+
+<div style="max-width: 600px; max-height: 400px; padding: 10px">
+
+  <div class="well">
+    <h4>D3 Based Real Time Chart 
+  </div>
+
+  <div id="viewDiv"></div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<script src='https://code.jquery.com/jquery-2.0.3.js'></script>
+<script src="rti2.js"></script>
+
+
