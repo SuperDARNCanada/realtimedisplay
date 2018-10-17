@@ -72,8 +72,8 @@ function realTimeChartMulti(radar) {
     console.log(radar)
     console.log(sites[radar.toString()]) 
     var version = "0.1.0",
-      datum, data, radar,
-      timeMultiplier = 1000, maxSeconds = 7200, pixelsPerSecond = 1, // pixelsPerSeconds changes the speed the chart moves... create some function to calculate what this should be? 
+      datum, data, radar, // time Mulitplier controlls the time scale spanned and the Navigation bar is controlled by maxseconds 
+      timeDelay = 1000, timeMultiplier = 10000, maxSeconds = 10000, pixelsPerSecond = 0.5, // pixelsPerSeconds changes the speed the chart moves... create some function to calculate what this should be? 
       svgWidth = 700, svgHeight = 300,
       margin = { top: 20, bottom: 20, left: 100, right: 30, topNav: 10, bottomNav: 20 },
       dimension = { chartTitle: 20, xAxis: 20, yAxis: 60, xTitle: 20, yTitle: 20, navChart: 70 },
@@ -83,7 +83,7 @@ function realTimeChartMulti(radar) {
       border,
       selection,
       barId = 0,
-      yDomain = [],
+      yDomain = d3.range(maxY),
       debug = false,
       barWidth = 5,
       halted = false,
@@ -94,6 +94,11 @@ function realTimeChartMulti(radar) {
       xAxisG, yAxisG,
       xAxis, yAxis,
       svg;
+  console.log("timeDelay ", timeDelay);
+  console.log("timeMultiplier ", timeMultiplier);
+  console.log("maxSeconds ", maxSeconds);
+  console.log("pixelPerSecond ", pixelsPerSecond);
+
 
   // create the chart
   var chart = function(s) {
@@ -118,6 +123,7 @@ function realTimeChartMulti(radar) {
 
     // compute dimension of main and nav charts, and offsets
     var marginTop = margin.top + chartTitleDim;
+    //height = svgHeight - - margin.bottom - chartTitleDim - xTitleDim - xAxisDim - navChartDim + 30 ;
     height = svgHeight - marginTop - margin.bottom - chartTitleDim - xTitleDim - xAxisDim - navChartDim + 30;
     heightNav = navChartDim - margin.topNav - margin.bottomNav;
     var marginTopNav = svgHeight - margin.bottom - heightNav - margin.topNav;
@@ -208,15 +214,15 @@ function realTimeChartMulti(radar) {
         });
 
     // define main chart scales
-    //x = d3.time.scale.utc().range([0, width]); 
-    x = d3.time.scale().range([0, width]);
+    x = d3.time.scale.utc().range([0, width]); 
+    //x = d3.time.scale().range([0, width]);
     
-    y = d3.scale.linear().domain(yDomain).range([0,height]);
+    y = d3.scale.linear().domain([maxY, minY]).range([0,height]);
     //y = d3.scale.ordinal().domain(yDomain).rangeRoundPoints([height, 0], 1)
 
     // define main chart axis
     xAxis = d3.svg.axis()
-        //.tickFormat(d3.time.format.utc("%H:%M"))
+        .tickFormat(d3.time.format.utc("%H:%M"))
         .orient("bottom");
     yAxis = d3.svg.axis().orient("left");
 
@@ -245,24 +251,27 @@ function realTimeChartMulti(radar) {
         .attr("transform", "translate(0," + heightNav + ")");
 
     // define nav chart scales
-    //xNav = d3.time.scale.utc().range([0, widthNav]);
-    xNav = d3.time.scale().range([0, widthNav]);    
-    yNav = d3.scale.ordinal().domain(yDomain).rangeRoundPoints([heightNav, 0], 1)
+    xNav = d3.time.scale.utc().range([0, widthNav]);
+    yNav = d3.scale.linear().domain([maxY, minY]).range([0,height]);
+
+    //xNav = d3.time.scale().range([0, widthNav]);    
+    //yNav = d3.scale.ordinal().domain(yDomain).rangeRoundPoints([heightNav, 0], 1)
 
     // define nav axis
-    var xAxisNav = d3.svg.axis().orient("bottom");
+    var xAxisNav = d3.svg.axis()
+        .tickFormat(d3.time.format.utc("%H:%M"))
+        .orient("bottom");
 
     // compute initial time domains...
     var ts = new Date().getTime();
-    console.log(ts)
     // first, the full time domain
     var endTime = new Date(ts);
-    var startTime = new Date(endTime.getTime() - maxSeconds * 1000);
+    var startTime = new Date(endTime.getTime() - maxSeconds * timeMultiplier);
     var interval = endTime.getTime() - startTime.getTime();
 
     // then the viewport time domain (what's visible in the main chart and the viewport in the nav chart)
     var endTimeViewport = new Date(ts);
-    var startTimeViewport = new Date(endTime.getTime() - width / pixelsPerSecond * 1000);
+    var startTimeViewport = new Date(endTime.getTime() - width / pixelsPerSecond * timeMultiplier);
     var intervalViewport = endTimeViewport.getTime() - startTimeViewport.getTime();
     var offsetViewport = startTimeViewport.getTime() - startTime.getTime();
 
@@ -291,7 +300,7 @@ function realTimeChartMulti(radar) {
 
           // handle invisible viewport
           if (intervalViewport == 0) {
-            intervalViewport = maxSeconds * 1000;
+            intervalViewport = maxSeconds * timeMultiplier;
             offsetViewport = 0;
           }
 
@@ -436,7 +445,7 @@ function realTimeChartMulti(radar) {
             }
             return retVal; 
           })
-          .style("fill", function(d) { return d.color || "black"; })
+          .style("fill", function(d) { return d.color || "transparent"; })
           //.style("stroke", "orange")
           //.style("stroke-width", "1px")
           //.style("stroke-opacity", 0.8)
@@ -452,7 +461,7 @@ function realTimeChartMulti(radar) {
       // add items
       updateSelNav.enter().append("rect")
           .attr("r", 1)
-          .attr("fill", "black")
+          .attr("fill", "transparent")
 
       // added items now part of update selection; set coordinates of points
       updateSelNav
@@ -484,7 +493,7 @@ function realTimeChartMulti(radar) {
 
       // compute new nav extents
       endTime = new Date();
-      startTime = new Date(endTime.getTime() - maxSeconds * 1000);
+      startTime = new Date(endTime.getTime() - maxSeconds * timeMultiplier);
 
       // compute new viewport extents 
       startTimeViewport = new Date(startTime.getTime() + offset);
@@ -502,7 +511,7 @@ function realTimeChartMulti(radar) {
       // refresh svg
       refresh();
 
-    }, 200)
+    }, timeDelay)
 
     // end setInterval function
 
@@ -570,7 +579,9 @@ function realTimeChartMulti(radar) {
     yDomain = _;
     if (svg) {
       // update the y ordinal scale
-      y = d3.scale.ordinal().domain(yDomain).rangeRoundPoints([height, 0],1);
+      maxY = d3.max(yDomain)
+      y = d3.scale.linear().domain([maxY, minY]).range([0,height]);
+      //y = d3.scale.ordinal().domain(yDomain).rangeRoundPoints([height, 0],1);
       // update the y axis
       yAxis.scale(y)(yAxisG);
       // update the y ordinal scale for the nav chart
@@ -601,9 +612,37 @@ function realTimeChartMulti(radar) {
 } // end realTimeChart function
 
 // create the real time chart
-var chart = realTimeChartMulti("saskatoon")
-    .title("Chart Title")
-    .yTitle("Categories")
+var chartspect = realTimeChartMulti("saskatoon")
+    .title("Saskatoon Spectral Width")
+    .yTitle("Range Gates")
+    .xTitle("Time")
+    .yDomain(d3.range(100)) // initial y domain (note array)
+    .border(true)
+    .width(900)
+    .height(350); 
+
+var chartelev = realTimeChartMulti("saskatoon")
+    .title("Saskatoon Elevation")
+    .yTitle("Range Gates")
+    .xTitle("Time")
+    .yDomain(d3.range(100)) // initial y domain (note array)
+    .border(true)
+    .width(900)
+    .height(350); 
+
+
+var chartvel = realTimeChartMulti("saskatoon")
+    .title("Saskatoon Velocity")
+    .yTitle("Range Gates")
+    .xTitle("Time")
+    .yDomain(d3.range(100)) // initial y domain (note array)
+    .border(true)
+    .width(900)
+    .height(350); 
+
+var chartsnr = realTimeChartMulti("saskatoon")
+    .title("Saskatoon Signal To Noise")
+    .yTitle("Range Gates")
     .xTitle("Time")
     .yDomain(d3.range(100)) // initial y domain (note array)
     .border(true)
@@ -613,22 +652,24 @@ var chart = realTimeChartMulti("saskatoon")
 // invoke the chart
 var chartDiv = d3.select("#viewDiv").append("div")
     .attr("id", "chartDiv")
-    .call(chart);
+    .call(chartsnr);
 
 // alternative and equivalent invocation
-//chart(chartDiv); 
+chartvel(chartDiv); 
+chartspect(chartDiv);
+chartelev(chartDiv);
 
 // event handler for debug checkbox
-d3.select("#debug").on("change", function() {
-  var state = d3.select(this).property("checked")
-  chart.debug(state);
-})
-
-// event handler for halt checkbox
-d3.select("#halt").on("change", function() {
-  var state = d3.select(this).property("checked")
-  chart.halt(state);
-})
+//d3.select("#debug").on("change", function() {
+//  var state = d3.select(this).property("checked")
+//  chartsnr.debug(state);
+//})
+//
+//// event handler for halt checkbox
+//d3.select("#halt").on("change", function() {
+//  var state = d3.select(this).property("checked")
+//  charts.halt(state);
+//})
 
 
 // configure the data generator
@@ -765,11 +806,16 @@ RadarConnections.prototype.on_message = function(evt,radar){
             var json_data = JSON.parse(received_data);
             var radar_ranges = json_data.nrang;
 
-            var data_array = [];
-            data_array = json_data.velocity;
+            var vel_array = [];
+            var snr_array = [];
+            var spect_width_array = [];
+            var elev_array = [];
+            vel_array = json_data.velocity;
+            snr_array = json_data.power; 
+            spect_width_array = json_data.width;
+            elev_array = json_data.elevation;
+
             console.log("beam",json_data.beam);
-            console.log("nrang",json_data.nrang);
-            console.log("radar",radar);
             /*switch(inteactivityObj.displayType){
                 case "pwr": data_array = json_data.power; break;
                 case "width": data_array = json_data.width; break;
@@ -785,22 +831,48 @@ RadarConnections.prototype.on_message = function(evt,radar){
             radar_time.setHours(parts[1]);
             radar_time.setMinutes(parts[2]);
             radar_time.setSeconds(parts[3]);
-            console.log(radar_time.getDate()," ",radar_time.getHours(),":",radar_time.getMinutes())
-            chart.yDomain(d3.range(sites["saskatoon"]["maxRangeGates"]))
-            chart.yDomain().forEach(function(cat,i){
-              //  if (json_data.beam == 5){
-              //      console.log("got some data");
-                    console.log(data_array[i])
-                    var obj = {
+            chartsnr.yDomain(d3.range(sites["saskatoon"]["maxRangeGates"]))
+            chartsnr.yDomain().forEach(function(cat,i){
+               if (json_data.beam == 5){
+                    var velobj = {
                         time: now,
-                        color: data_array[i],
+                        color: vel_array[i],
                         opacity: 1,
                         category: i,
                         type: "rect",
                         size: 5,
                     };
-                    chart.datum(obj);
-               // }
+                    var snrobj = {
+                        time: now,
+                        color: snr_array[i],
+                        opacity: 1,
+                        category: i,
+                        type: "rect",
+                        size: 5,
+                    };
+                    var spectobj = {
+                        time: now,
+                        color: spect_width_array[i],
+                        opacity: 1,
+                        category: i,
+                        type: "rect",
+                        size: 5,
+                    };
+                    var elevobj = {
+                        time: now,
+                        color: elev_array[i],
+                        opacity: 1,
+                        category: i,
+                        type: "rect",
+                        size: 5,
+                    };
+
+
+                    chartsnr.datum(snrobj);
+                    chartvel.datum(velobj);
+                    chartspect.datum(spectobj);
+                    chartelev.datum(elevobj);
+                }
                 //send data to the chart
             });
         };
