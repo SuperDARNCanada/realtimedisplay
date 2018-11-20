@@ -687,7 +687,6 @@ class RadarCharts {
     pushInitialData(dataCollection) {
         function processData(time, data) {
             var dataTime = new Date();
-            var now = new Date()
             var UTChour = time.slice(0,2);
             var UTCminute = time.slice(3,5);
             var UTCseconds = time.slice(6,8);
@@ -761,7 +760,8 @@ class RadarConnection {
         // this.charts.setRardarChatsyDomain(radar);
         this.currentRadar = radar;
         this.currentBeam = 1;
-        
+        this.controlProgram = '';
+        this.frequency = 0;
         // Clear any data from the old radar selection
         this.dataCollection.clear();
         this.initializeDataCollection(radars[this.currentRadar]["maxBeams"]);
@@ -798,6 +798,13 @@ class RadarConnection {
             // TODO: This idea could be expanded to opening sockets 
             // on all radars and doing the same thing... something to consider 
             var radar_beam = radar_data.beam;
+            this.controlProgram = radar_data.cp;
+            this.frequency = radar_data.freq;
+            console.log(this.frequency);
+            console.log(this.controlProgram);
+            console.log(document.getElementById("radar-frequency"))
+            document.getElementById("radar-frequency").innerHTML = this.frequency;
+            document.getElementById("radar-control-program").innerHTML = this.controlProgram; 
             this.dataCollection.get(radar_data.beam).push(radar_data);
             if (radar_beam == this.currentBeam) {
                 this.charts.pushData(radar_data);
@@ -807,7 +814,24 @@ class RadarConnection {
         reader.readAsText(evt.data)
     }
 
-
+    trimDataCollection() {
+        for (var i=0; i  < radars[this.currentRadar]["maxBeams"]; i++)
+        {
+            this.dataCollection.get(this.currentBeam).filter( function(data) {
+                var now = new Date();
+                var dataTime = new Date();
+                var UTChour = time.slice(0,2);
+                var UTCminute = time.slice(3,5);
+                var UTCseconds = time.slice(6,8);
+                dataTime.setUTCHours(UTChour);
+                dataTime.setUTCMinutes(UTCminute);
+                dataTime.setUTCSeconds(UTCseconds);
+                var diff = Math.abs(now.getTime() - dataTime.getTime())/3600000;
+                return diff < 3;
+            });
+        }
+    
+    }
 
 }
 
@@ -828,7 +852,6 @@ function PopulateRadarSelection() {
 		var beam_num = new Option(i,i);
         beamList.options.add(beam_num); 
 	}
-
 }
 
 function RadarChange() {
