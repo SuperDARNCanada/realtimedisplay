@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Author: Bo Ericsson -->
+  <title>Real Time Chart</title>
+  <link rel=stylesheet type=text/css href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" media="all">
+  <style>
+  .axis text {
+    font: 10px sans-serif;
+  }
+  .chartTitle {
+    font-size: 12px;
+    font-weight: bold;
+    text-anchor: middle; 
+  }
+  .axis .title {
+    font-weight: bold;
+    text-anchor: middle;
+  }
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .x.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .nav .area {
+    fill: lightgrey;
+    stroke-width: 0px;
+  }
+  .nav .line {
+    fill: none;
+    stroke: darkgrey;
+    stroke-width: 1px;
+  }
+  .viewport {
+    stroke: grey;
+    fill: black;
+    fill-opacity: 0.3;
+  }
+  .viewport .extent {
+    fill: green;
+  }
+  .well {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  </style>
+<body onload="PopulateRadarSelection()">
+
+<div style="max-width: 600px; max-height: 400px; padding: 10px">
+
+  <div class="well">
+    <h1>SuperDARN  Real Time Summary Plots
+  </div >
+
+  <div>
+    <div style="float:left">
+      <h4>Radar</h4>
+      <select id="radar-list" onchange="RadarChange();"></select>
+      <h4>Beam #</h4>
+      <select id="beam-list" onchange="BeamChange();"> </select>
+    </div>
+    <div id"radar-params" style="float:right">
+      <h4>Radar Control Program</h4>
+      <p id="radar-control-program"></p>
+      <h4>Radar Frequency (kHz)</h4>
+      <p id="radar-frequency"> </p>
+    </div>
+  </div>
+  <div id="viewDiv"></div>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<script src='https://code.jquery.com/jquery-2.0.3.js'></script>
+<script src="realtime-chart.js"></script>
+
+
