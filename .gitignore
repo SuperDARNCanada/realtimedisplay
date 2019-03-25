@@ -1,2 +1,3 @@
 startbackends.sh
+startwebsockets.sh
 *.pyc
