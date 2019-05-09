@@ -23,7 +23,19 @@ timeout_counter = 0
 noheader_counter = 0
 
 def convert_power_to_css(pwr):
-	pwr_css_values = cg.PWR_GRAD_VALUES
+	"""
+        Converts power to css hexdecimcal color representation
+
+        Parameters
+        ----------
+        pwr : float
+            powers value
+
+        return
+        ------
+
+        """
+        pwr_css_values = cg.PWR_GRAD_VALUES
 
 	if pwr < 0.0:
 		return pwr_css_values[cg.PWR_GRAD_STEPS -1]
@@ -113,7 +125,7 @@ def convert_cp_to_text(cp):
 		3350:	"ulfscan",
 		-3350:	"ulfscan",
 		}.get(cp,"unknown")
-	
+
 
 
 
@@ -169,7 +181,7 @@ def create_json_packet(dmap_dict):
 
 
 	return json.dumps(json_dict)
-	
+
 
 	#print(slist,gsct,vel_css)
 
@@ -178,7 +190,7 @@ def create_json_packet(dmap_dict):
 def handle_radar_socket(rad_socket,rad_info):
 	global timeout_counter, noheader_counter
 	size = 8
-	try:	
+	try:
 		data = rad_socket.recv(size)
 		if data:
 			timeout_counter = 0
@@ -204,7 +216,7 @@ def handle_radar_socket(rad_socket,rad_info):
 						rad_data = rad_data + rec_data
 						byte_counter = byte_counter - len(rec_data)
 						#print(byte_counter,len(rec_data))
-	
+
 					#print len(rad_data)
 
 					try:
@@ -238,7 +250,7 @@ def handle_radar_socket(rad_socket,rad_info):
 			timeout_counter = timeout_counter + 1
 	except socket.error as serr:
 		if serr.errno == errno.ENOTCONN:
-			#try once more to connect. If not, we will return	
+			#try once more to connect. If not, we will return
 			try:
 				rad_socket.connect(rad_info)
 			except:
@@ -260,7 +272,7 @@ def client_connections(host_port):
 	while True:
 		print("in client connections")
 		input_ready,output_ready,except_ready = select.select(input_sockets,[],[],60.0)
-		
+
 		for s in input_ready:
 			if s is server_socket:
 				client,address = server_socket.accept()
