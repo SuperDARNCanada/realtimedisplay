@@ -290,33 +290,33 @@ def radar_connection(radar_host,radar_port):
 
 if __name__ == '__main__':
 
-	radar_host = sys.argv[1]
-	radar_port = int(sys.argv[2])
-	host_port = int(sys.argv[3])
+    radar_host = sys.argv[1]
+    radar_port = int(sys.argv[2])
+    host_port = int(sys.argv[3])
 
-	client_handler = threading.Thread(target=client_connections,args=(host_port,))
-	client_handler.daemon = True
-	radar_handler = threading.Thread(target=radar_connection,args=(radar_host,radar_port))
-	radar_handler.daemon = True
+    client_handler = threading.Thread(target=client_connections,args=(host_port,))
+    client_handler.daemon = True
+    radar_handler = threading.Thread(target=radar_connection,args=(radar_host,radar_port))
+    radar_handler.daemon = True
 
-	client_handler.start()
-	radar_handler.start()
+    client_handler.start()
+    radar_handler.start()
 
-	while True:
-		if not client_handler.is_alive():
-			print("Client handler died")
-			client_handler = threading.Thread(target=client_connections,args=(host_port,))
-			client_handler.daemon = True
-			client_handler.start()
+    while True:
+    	if not client_handler.is_alive():
+    		print("Client handler died")
+    		client_handler = threading.Thread(target=client_connections,args=(host_port,))
+    		client_handler.daemon = True
+    		client_handler.start()
 
-		if not radar_handler.is_alive():
-			print("Radar handler died")
-			radar_handler = threading.Thread(target=radar_connection,args=(radar_host,radar_port))
-			radar_handler.daemon = True
-			radar_handler.start()
+    	if not radar_handler.is_alive():
+    		print("Radar handler died")
+    		radar_handler = threading.Thread(target=radar_connection,args=(radar_host,radar_port))
+    		radar_handler.daemon = True
+    		radar_handler.start()
 
 
-		time.sleep(5)
+    	time.sleep(5)
 
 
 

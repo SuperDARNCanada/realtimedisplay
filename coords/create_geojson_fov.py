@@ -25,7 +25,7 @@ def make_geojson(site,rsep,nbeams,ngates,lagfr):
 			polys.append(geojson.Feature(geometry=geojson.Polygon([coords]),id=str(beam).zfill(2)+str(gate).zfill(2)))
 
 	featureCollection = geojson.FeatureCollection(polys)
-	validation = geojson.is_valid(featureCollection)
+#	validation = geojson.is_valid(featureCollection)
 
 	return featureCollection
 
