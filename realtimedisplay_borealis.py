@@ -53,7 +53,7 @@ def convert_velocity_to_css(vel,gflg):
     elif vel > (cg.VEL_GRAD_STEPS-1)/2.0:
         return vel_css_values[0]
     else:
-        return vel_css_values[cg.VEL_GRAD_STEPS - 1 - (int(round(vel)) + (cg.VEL_GRAD_STEPS-1)/2)]
+        return vel_css_values[cg.VEL_GRAD_STEPS - 1 - int(int(round(vel)) + (cg.VEL_GRAD_STEPS-1)/2)]
 
 def convert_elevation_to_css(elev):
     elev_css_values = cg.ELEV_GRAD_VALUES
@@ -210,9 +210,9 @@ def radar_connection(radar_host,radar_port):
 
         packet = create_json_packet(deserialize)
         if packet != -1:
-            print(packet)
-            # for wc in web_clients:
-            #     wc.send(packet)
+            #print(packet)
+            for wc in web_clients:
+                wc.send(packet.encode('utf-8'))
 
 
 if __name__ == '__main__':
